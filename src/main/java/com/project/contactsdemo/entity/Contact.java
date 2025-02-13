@@ -5,9 +5,11 @@
 package com.project.contactsdemo.entity;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 
 @Entity(name = "contacts")
-@Table(name = "contact")
+@Table(name = "contacts")
 
 public class Contact{
 
@@ -35,7 +37,9 @@ public class Contact{
     @Column(
             name="contact_status",
             nullable = false,
-            unique = false
+            columnDefinition ="Integer default 0"
     )
-    private String status;
+    private Integer status;
+    @ManyToMany(mappedBy = "contacts")
+    Set<Person> person;
 }
