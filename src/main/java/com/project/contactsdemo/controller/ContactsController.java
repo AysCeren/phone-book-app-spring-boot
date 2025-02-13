@@ -10,7 +10,7 @@ import com.project.contactsdemo.entity.Contact;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.contactsdemo.entity.Contact;
+import com.project.contactsdemo.requestdto.RequestDto;
 import com.project.contactsdemo.service.ContactsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +30,25 @@ public class ContactsController {
         this.contactService = contactService;
     }
 
+    //Save operation with POST request
+    @RequestMapping(
+            method = {RequestMethod.POST},
+            path = {"/contacts"}
+    )
+    public ResponseEntity<Contact> savePerson(@RequestBody RequestDto contactDTO) {
+        this.contactService.savePerson(contactDTO);
+        return new ResponseEntity(contactDTO, HttpStatus.CREATED);
+    }
+
     @RequestMapping(
             method = {RequestMethod.GET},
             path = {"/contacts"}
     )
-    public ResponseEntity<List<Contact>> getContacts(String name) {
-        List<Contact> contacts = new ArrayList(this.contactService.getAllContacts());
+    public ResponseEntity<List<Contact>> getAllPerson() {
+        List<Contact> contacts = new ArrayList(this.contactService.getAllPerson());
         return new ResponseEntity(contacts, HttpStatus.OK);
     }
+
 
     @RequestMapping(
             method = {RequestMethod.GET},
@@ -57,14 +68,7 @@ public class ContactsController {
         return new ResponseEntity(contacts, HttpStatus.FOUND);
     }
 
-    @RequestMapping(
-            method = {RequestMethod.POST},
-            path = {"/contacts"}
-    )
-    public ResponseEntity<Contact> createContact(@RequestBody Contacts contact) {
-        this.contactService.saveContact(contact);
-        return new ResponseEntity(contact, HttpStatus.CREATED);
-    }
+
 
     @RequestMapping(
             method = {RequestMethod.DELETE},
