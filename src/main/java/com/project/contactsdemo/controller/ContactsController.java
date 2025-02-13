@@ -10,7 +10,7 @@ import com.project.contactsdemo.entity.Contact;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.contactsdemo.requestdto.RequestDto;
+import com.project.contactsdemo.requestdto.PersonDTO;
 import com.project.contactsdemo.service.ContactsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class ContactsController {
             method = {RequestMethod.POST},
             path = {"/contacts"}
     )
-    public ResponseEntity<Contact> savePerson(@RequestBody RequestDto contactDTO) {
+    public ResponseEntity<Contact> savePerson(@RequestBody PersonDTO contactDTO) {
         this.contactService.savePerson(contactDTO);
         return new ResponseEntity(contactDTO, HttpStatus.CREATED);
     }

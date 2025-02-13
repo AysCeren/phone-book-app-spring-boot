@@ -1,9 +1,12 @@
 package com.project.contactsdemo.service;
 
+import com.project.contactsdemo.entity.Contact;
 import com.project.contactsdemo.entity.Person;
 import com.project.contactsdemo.exception.ContactNotFoundException;
 import com.project.contactsdemo.repository.ContactsRepository;
-import com.project.contactsdemo.requestdto.RequestDto;
+import com.project.contactsdemo.repository.PersonRepository;
+import com.project.contactsdemo.requestdto.ContactDTO;
+import com.project.contactsdemo.requestdto.PersonDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -13,46 +16,57 @@ import java.util.List;
 @Service
 public class ContactsService {
 
+    private final PersonRepository personRepository;
     public ContactsRepository contactsRepository;
     //Constructor injection
-    public ContactsService(ContactsRepository contactsRepository) {
+    public ContactsService(ContactsRepository contactsRepository, PersonRepository personRepository) {
         this.contactsRepository = contactsRepository;
+        this.personRepository = personRepository;
     }
 
     @Transactional
-    public void savePerson(RequestDto savePersonRequestDto) {
-        Person person = convertToEntity(savePersonRequestDto);
-        this.contactsRepository.save(person);
+    public void savePerson(PersonDTO savePersonRequestDto) {
+        Person person = fromPersonDTOToEntity(savePersonRequestDto);
+       this.personRepository.save(person);
     }
 
     @Transactional
-    public List<RequestDto> getAllPerson() {
-        List<Person> personList = new ArrayList();
+    public List<PersonDTO> getAllPerson() {
         //TODO: Optional Class olarak döndüreceğiz
-        personList.addAll(this.contactsRepository.findByStatus(true)); //TODO: How does this **** work?
+        List<Person> personList = new ArrayList<>(personRepository.findAll());
         if (personList.isEmpty()) {
             throw new ContactNotFoundException("No contacts found");
         } else {
-           List<RequestDto> requestDtoList = new ArrayList();
+           List<PersonDTO> requestDtoList = new ArrayList();
            for(Person person : personList) {
-               requestDtoList.add(convertToRequestDto(person));
+               requestDtoList.add(fromPersonToPersonDto(person));
            }
            return requestDtoList;
         }
     }
 
-    
-
-
+    @Transactional
+    public void saveContact(ContactDTO saveContactRequestDto) {
+        Contact contact = fromContactDTOToEntity(saveContactRequestDto);
+        this.contactsRepository.save(contact);
+    }
 
 
 
     //TODO: Work on this with mapStructure
-    private Person convertToEntity(RequestDto requestDto) {
+    //TODO: Can we work with Collections
+    private Person fromPersonDTOToEntity(PersonDTO requestDto) {
+        return null;
+    }
+    //TODO: Work on this with mapStructure
+    private Contact fromContactDTOToEntity(ContactDTO requestDto) {
         return null;
     }
 
-    private RequestDto convertToRequestDto(Person person) {
+    private PersonDTO fromPersonToPersonDto(Person person) {
+        return null;
+    }
+    private ContactDTO fromContactToContactDTO(Contact contact) {
         return null;
     }
 
