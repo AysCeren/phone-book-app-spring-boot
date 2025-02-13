@@ -10,8 +10,9 @@ import com.project.contactsdemo.entity.Contact;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.project.contactsdemo.requestdto.ContactDTO;
 import com.project.contactsdemo.requestdto.PersonDTO;
-import com.project.contactsdemo.service.ContactsService;
+import com.project.contactsdemo.service.PersonContactService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +25,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping({"/api"})
 public class ContactsController {
-    ContactsService contactService;
+    PersonContactService personContactService;
 
-    public ContactsController(ContactsService contactService) {
-        this.contactService = contactService;
+    public ContactsController(PersonContactService personContactService) {
+        this.personContactService = personContactService;
     }
 
     //Save operation with POST request
@@ -35,8 +36,17 @@ public class ContactsController {
             method = {RequestMethod.POST},
             path = {"/contacts"}
     )
-    public ResponseEntity<Contact> savePerson(@RequestBody PersonDTO contactDTO) {
-        this.contactService.savePerson(contactDTO);
+    public ResponseEntity<Contact> savePerson(@RequestBody PersonDTO personDTO) {
+        this.personContactService.savePerson(personDTO);
+        return new ResponseEntity(personDTO, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(
+            method = {RequestMethod.POST},
+            path = {"/contacts"}
+    )
+    public ResponseEntity<Contact> saveContact(@RequestBody ContactDTO contactDTO) {
+        this.personContactService.saveContact(contactDTO);
         return new ResponseEntity(contactDTO, HttpStatus.CREATED);
     }
 
@@ -45,7 +55,7 @@ public class ContactsController {
             path = {"/contacts"}
     )
     public ResponseEntity<List<Contact>> getAllPerson() {
-        List<Contact> contacts = new ArrayList(this.contactService.getAllPerson());
+        List<Contact> contacts = new ArrayList(this.personContactService.getAllPerson());
         return new ResponseEntity(contacts, HttpStatus.OK);
     }
 
@@ -55,7 +65,7 @@ public class ContactsController {
             path = {"/contacts/{id}"}
     )
     public ResponseEntity<Contact> getContactById(@PathVariable("id") int id) {
-        Contact contact = this.contactService.getContactById(id);
+        Contact contact = this.personContactService.getContactById(id);
         return new ResponseEntity(contact, HttpStatus.FOUND);
     }
 
@@ -64,7 +74,7 @@ public class ContactsController {
             path = {"/contacts/{name}"}
     )
     public ResponseEntity<List<Contact>> getContactByName(@PathVariable("name") String name) {
-        List<Contact> contacts = new ArrayList(this.contactService.getContactsByName(name));
+        List<Contact> contacts = new ArrayList(this.personContactService.getContactsByName(name));
         return new ResponseEntity(contacts, HttpStatus.FOUND);
     }
 
@@ -75,7 +85,7 @@ public class ContactsController {
             path = {"/contacts/{id}"}
     )
     public ResponseEntity<Contact> deleteById(@PathVariable("id") int id) {
-        this.contactService.deleteContact(id);
+        this.personContactService.deleteContact(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -84,7 +94,7 @@ public class ContactsController {
             path = {"/contacts"}
     )
     public ResponseEntity<Contact> deleteAllContacts() {
-        this.contactService.deleteAllContacts();
+        this.personContactService.deleteAllContacts();
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -94,7 +104,7 @@ public class ContactsController {
             path = {"/contacts/{id}"}
     )
     public ResponseEntity<Contact> updateContact(@PathVariable("id") int id, @RequestBody Contacts contact) {
-        this.contactService.updateContact(contact, id);
+        this.personContactService.updateContact(contact, id);
         return new ResponseEntity(contact, HttpStatus.OK);
     }
 }

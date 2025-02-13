@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ContactsService {
+public class PersonContactService {
 
     private final PersonRepository personRepository;
     public ContactsRepository contactsRepository;
     //Constructor injection
-    public ContactsService(ContactsRepository contactsRepository, PersonRepository personRepository) {
+    public PersonContactService(ContactsRepository contactsRepository, PersonRepository personRepository) {
         this.contactsRepository = contactsRepository;
         this.personRepository = personRepository;
     }
