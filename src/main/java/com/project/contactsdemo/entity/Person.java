@@ -61,9 +61,8 @@ public class Person {
     private String phoneNumber;
 
     @ManyToMany
-    //bunlsra bak
             @JoinTable(
-                    name="persons",
+                    name="person_contact_join_list",
                     joinColumns = @JoinColumn(name="person_id"),
                     inverseJoinColumns = @JoinColumn(name = "contact_id")
             )
