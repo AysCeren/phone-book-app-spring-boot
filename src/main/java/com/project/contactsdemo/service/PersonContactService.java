@@ -17,8 +17,9 @@ import java.util.Optional;
 @Service
 public class PersonContactService {
 
-    private final PersonRepository personRepository;
+    public PersonRepository personRepository;
     public ContactsRepository contactsRepository;
+
     //Constructor injection
     public PersonContactService(ContactsRepository contactsRepository, PersonRepository personRepository) {
         this.contactsRepository = contactsRepository;
