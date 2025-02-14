@@ -24,17 +24,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/api"})
-public class ContactsController {
+public class PersonContactController {
     PersonContactService personContactService;
 
-    public ContactsController(PersonContactService personContactService) {
+    public PersonContactController(PersonContactService personContactService) {
         this.personContactService = personContactService;
     }
 
     //Save operation with POST request
     @RequestMapping(
             method = {RequestMethod.POST},
-            path = {"/contacts"}
+            path = {"/savePerson"}
     )
     public ResponseEntity<Contact> savePerson(@RequestBody PersonDTO personDTO) {
         this.personContactService.savePerson(personDTO);
@@ -82,10 +82,10 @@ public class ContactsController {
 
     @RequestMapping(
             method = {RequestMethod.DELETE},
-            path = {"/contacts/{id}"}
+            path = {"/contacts"}
     )
-    public ResponseEntity<Contact> deleteById(@PathVariable("id") int id) {
-        this.personContactService.deleteContact(id);
+    public ResponseEntity<Contact> deleteContact(@RequestBody ContactDTO contactDTO) {
+        this.personContactService.deleteContact(contactDTO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -98,13 +98,13 @@ public class ContactsController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping({"/contacts/{id}"})
+    @PutMapping({"/contacts/"})
     @RequestMapping(
             method = {RequestMethod.PUT},
-            path = {"/contacts/{id}"}
+            path = {"/contacts"}
     )
-    public ResponseEntity<Contact> updateContact(@PathVariable("id") int id, @RequestBody Contacts contact) {
-        this.personContactService.updateContact(contact, id);
-        return new ResponseEntity(contact, HttpStatus.OK);
+    public ResponseEntity<Contact> updateContact( @RequestBody ContactDTO contactDTO) {
+        this.personContactService.updateContact(contactDTO);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
