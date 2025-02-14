@@ -4,6 +4,8 @@
 //
 package com.project.contactsdemo.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
@@ -11,6 +13,8 @@ import java.util.Set;
 @Entity(name = "contact")
 @Table(name = "contacts")
 
+@Getter
+@Setter
 public class Contact{
 
     @Id
