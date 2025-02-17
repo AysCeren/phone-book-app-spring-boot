@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    List<Person> findByLastName(String lastName);
+    //List<Person> findByLastName(String lastName);
 }

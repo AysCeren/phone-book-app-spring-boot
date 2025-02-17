@@ -1,14 +1,17 @@
 package com.project.contactsdemo.repository;
 
 import com.project.contactsdemo.entity.Contact;
-import com.project.contactsdemo.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ContactsRepository extends JpaRepository<Contact,Long> {
 
-    Collection<? extends Person> findByStatus(boolean status);
+    List<Contact> findByStatus(Integer status);
+
+    List<Contact> findContactsById(Long personId);
+    //Burada anlamadığım hangi column'un sorgusu, onu anlayamıyorum. Kontrol edelim!
 }

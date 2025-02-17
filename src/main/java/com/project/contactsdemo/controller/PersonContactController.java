@@ -5,17 +5,16 @@
 
 package com.project.contactsdemo.controller;
 
-import com.project.contactsdemo.entity.Contact;
 //import com.example.service.ContactService;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.contactsdemo.requestdto.ContactDTO;
-import com.project.contactsdemo.requestdto.PersonDTO;
+        import com.project.contactsdemo.entity.Contact;
+        import com.project.contactsdemo.requestdto.ContactRequestDTO;
+import com.project.contactsdemo.requestdto.PersonRequestDTO;
 import com.project.contactsdemo.service.PersonContactService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping({"/api"})
 public class PersonContactController {
 
-    public PersonContactService personContactService;
+    private final PersonContactService personContactService;
     //Constructor injection (DI)
     public PersonContactController(PersonContactService personContactService) {
         this.personContactService = personContactService;
@@ -35,25 +34,25 @@ public class PersonContactController {
     //Save operation with POST request
     @RequestMapping(
             method = {RequestMethod.POST},
-            path = {"/contacts"}
-    )
-    public ResponseEntity<Contact> savePerson(@RequestBody PersonDTO personDTO) {
-        this.personContactService.savePerson(personDTO);
-        return new ResponseEntity(personDTO, HttpStatus.CREATED);
+            path = {"/contacts1"}
+    )//model attribute
+    public ResponseEntity<Contact> savePerson(@RequestBody PersonRequestDTO personRequestDTO) {
+        this.personContactService.savePerson(personRequestDTO);
+        return new ResponseEntity(personRequestDTO, HttpStatus.CREATED);
     }
 
     @RequestMapping(
             method = {RequestMethod.POST},
-            path = {"/contacts"}
+            path = {"/contacts2"}
     )
-    public ResponseEntity<Contact> saveContact(@RequestBody ContactDTO savedContactDTO) {
-        this.personContactService.saveContact(savedContactDTO);
+    public ResponseEntity<Contact> saveContact(@RequestBody ContactRequestDTO savedContactRequestDTO) {
+        this.personContactService.saveContact(savedContactRequestDTO);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(
             method = {RequestMethod.GET},
-            path = {"/contacts"}
+            path = {"/contacts3"}
     )
     public ResponseEntity<List<Contact>> getAllPerson() {
         List<Contact> contacts = new ArrayList(this.personContactService.getAllPerson());
@@ -63,22 +62,31 @@ public class PersonContactController {
 
     @RequestMapping(
             method = {RequestMethod.DELETE},
-            path = {"/contacts"}
+            path = {"/contacts4"}
     )
-    public ResponseEntity<Contact> deleteContact(@RequestBody ContactDTO contactDTO) {
-        this.personContactService.deleteContact(contactDTO);
+    public ResponseEntity<Contact> deleteContact(@RequestBody ContactRequestDTO contactRequestDTO) {
+        this.personContactService.deleteContact(contactRequestDTO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping({"/contacts/"})
+    /*
     @RequestMapping(
             method = {RequestMethod.PUT},
-            path = {"/contacts"}
+            path = {"/contacts5"}
     )
-    public ResponseEntity<Contact> updateContact( @RequestBody ContactDTO contactDTO) {
-        this.personContactService.updateContact(contactDTO);
+
+     */
+    public ResponseEntity<Contact> updateContact( @RequestBody ContactRequestDTO contactRequestDTO) {
+        this.personContactService.updateContact(contactRequestDTO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    /*
     //TODO: Missing methods: getAllContacts(personId) and getAllPersonWithContacts()
+    public ResponseEntity<List<Contact>> getAllContact(Long personId) {
+        List<Contact> contacts = new ArrayList(this.personContactService.getAllPerson());
+    }
+    */
+
 }

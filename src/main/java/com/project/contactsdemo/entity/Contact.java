@@ -7,9 +7,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
-
 @Entity(name = "contact")
 @Table(name = "contacts")
 
@@ -18,9 +15,7 @@ import java.util.Set;
 public class Contact{
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(
@@ -44,6 +39,5 @@ public class Contact{
             columnDefinition ="Integer default 0"
     )
     private Integer status;
-    @ManyToMany(mappedBy = "contacts")
-    Set<Person> person;
+
 }

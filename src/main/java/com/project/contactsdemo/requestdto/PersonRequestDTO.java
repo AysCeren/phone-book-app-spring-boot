@@ -1,6 +1,6 @@
 package com.project.contactsdemo.requestdto;
 
-import com.project.contactsdemo.entity.Gender;
+import com.project.contactsdemo.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Data
-public class PersonDTO {
+public class PersonRequestDTO {
     private String firstName;
     private String lastName;
     private String birthDate;

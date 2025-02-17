@@ -6,8 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 
 @Data
-//TODO: Neden Getter ve Setter koymadığımın açıklaması:
-public class ContactDTO {
+public class ContactRequestDTO {
     private Long personId;
     private String name;
     private String phoneNumber;

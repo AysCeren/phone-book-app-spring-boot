@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.2'
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.springframework.boot' version '3.2.7'
+	id 'io.spring.dependency-management' version '1.1.5'
 }
 
 group = 'com.project'
@@ -22,7 +22,11 @@ configurations {
 repositories {
 	mavenCentral()
 }
-
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = "UTF-8"
+	options.compilerArgs.add("-Amapstruct.defaultComponentModel=spring")
+	options.compilerArgs.add("-Amapstruct.defaultInjectionStrategy=constructor")
+}
 dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -32,8 +36,24 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//########### MAPSTRUCT #############################################
+	implementation("org.mapstruct:mapstruct:1.6.3")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+/*
+tasks.withType<JavaCompile> {
+	options.encoding = "UTF-8"
+	options.compilerArgs += [
+			'-Amapstruct.defaultComponentModel=spring',
+			'-Amapstruct.defaultInjectionStrategy=constructor'
+	]
+}
+
+ */
+
+
+

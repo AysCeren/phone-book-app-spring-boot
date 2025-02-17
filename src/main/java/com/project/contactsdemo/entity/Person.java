@@ -1,5 +1,6 @@
 package com.project.contactsdemo.entity;
 
+import com.project.contactsdemo.enums.Gender;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "person")
@@ -60,11 +62,7 @@ public class Person {
     )
     private String phoneNumber;
 
-    @ManyToMany
-            @JoinTable(
-                    name="person_contact_join_list",
-                    joinColumns = @JoinColumn(name="person_id"),
-                    inverseJoinColumns = @JoinColumn(name = "contact_id")
-            )
-    Set<Contact> contacts; //I am leaving it default and not making it private to reach from Contact
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private List<Contact> contacts; //I am leaving it default and not making it private to reach from Contact
 }
