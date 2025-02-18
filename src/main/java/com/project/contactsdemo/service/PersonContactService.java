@@ -10,6 +10,7 @@ import com.project.contactsdemo.requestdto.PersonRequestDTO;
 import com.project.contactsdemo.mapper.*;
 //import jakarta.transaction.Transactional;
 import com.project.contactsdemo.requestdto.PersonResponseDTO;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Propagation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonContactService {
@@ -27,6 +29,7 @@ public class PersonContactService {
     private final ContactMapper contactMapper;
 
     //Constructor injection for all
+    @Lazy
     public PersonContactService(ContactsRepository contactsRepository, PersonRepository personRepository,PersonMapper personMapper, ContactMapper contactMapper) {
         this.contactsRepository = contactsRepository;
         this.personRepository = personRepository;
@@ -49,12 +52,36 @@ public class PersonContactService {
         if (personList.isEmpty()) {
             throw new TrainingException("No contacts found");
         }
-        return personMapper.fromPersonToPersonResponseDto(personList);
+        return personList.stream().map(personMapper::fromPersonToPersonResponseDto).collect(Collectors.toList());
     }
 
-//    public List<Contact> getAllContact(Long personId){
-//       List<Contact> contactList = contactsRepository.findContactsById(personId);
-//    }
+    public List<Contact> getAllContact(Long personId){
+        /*Optional<Person> person = personRepository.findById(personId);
+        if (person.isPresent()) {
+            List<Contact> contactList = person.get().getContacts();
+            if (contactList.isEmpty()) {
+                throw new TrainingException("No contacts found for " + personId);
+            }
+            return contactList;
+        }
+        throw new TrainingException("No such a person id with: " + personId);*/
+        /*
+        if(!personRepository.existsById(personId)){
+            throw new TrainingException("No such a person with id "+personId);
+        }
+        List<Contact> contactList = new ArrayList<>(contactsRepository.findByPersonId(personId));
+        if (contactList.isEmpty()) {
+            throw new TrainingException("No contacts found");
+        }
+        return contactList;
+
+         */
+        List<Contact> contactsForPerson = new ArrayList<>(contactsRepository.findAllContactsForPerson(personId));
+        if (contactsForPerson.isEmpty()) {
+            throw new TrainingException("No contacts found");
+        }
+        return contactsForPerson;
+    }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void saveContact(ContactRequestDTO saveContactRequestDto) {
@@ -64,24 +91,34 @@ public class PersonContactService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateContact(ContactRequestDTO updatedContactRequestDTO) {
-        Contact updatedContact = getContact(updatedContactRequestDTO);
-        this.contactsRepository.save(updatedContact);
+        Contact contact = contactMapper.fromContactRequestDTOToContactEntity(updatedContactRequestDTO);
+        //check for the existence
+        if(!contactsRepository.existsById(contact.getId())){
+            throw new TrainingException("No such a contact to update");
+        }
+        else{
+            contact.setName(updatedContactRequestDTO.getName());
+            contact.setPhoneNo(updatedContactRequestDTO.getPhoneNumber());
+            contactsRepository.save(contact);
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteContact(ContactRequestDTO deletedContactRequestDTO) {
-        Contact deletedContact = getContact(deletedContactRequestDTO);
-        deletedContact.setStatus(0); //0: deleted, 1: exist
-        contactsRepository.save(deletedContact);
+        Contact deletedContact = contactMapper.fromContactRequestDTOToContactEntity(deletedContactRequestDTO);
+        if(!contactsRepository.existsById(deletedContact.getId())){
+            throw new TrainingException("No such a contact to delete");
+        }else {
+            deletedContact.setStatus(0); //0: deleted, 1: exist
+            contactsRepository.save(deletedContact);
+        }
     }
 
-    public Contact getContact(ContactRequestDTO contactRequestDTO) {
-        Contact contact = contactMapper.fromContactRequestDTOToContactEntity(contactRequestDTO);
-        assert contact != null; //TODO: Burada gelen dto'nun boş olup olmadığı kontrol edilecek mi?
-        Optional<Contact> deletedContact = contactsRepository.findById(contact.getId());
-        if (deletedContact.isEmpty()) {
-            throw new TrainingException("No contact found");
-        }
-        return contact;
+    public List<Person> getAllPersonWithContacts(){
+        List<Person> personListWithContacts = new ArrayList<>(personRepository.findAllWithContacts());
+        if (personListWithContacts.isEmpty()) {
+            throw new TrainingException("No contacts found");
+        }else
+            return personListWithContacts;
     }
 }
