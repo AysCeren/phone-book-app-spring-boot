@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler{
-    @ExceptionHandler({NullPointException.class})
-    public ResponseEntity<Object> handleStudentNotFoundException(NullPointException exception) {
+    @ExceptionHandler({NoDataFoundException.class})
+    public ResponseEntity<Object> handleDataNotFoundException(NoDataFoundException exception) {
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
     @ExceptionHandler({RuntimeException.class})

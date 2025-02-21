@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class PersonRequestDTO {
+    //TODO: Validation annotationları ekle
     private String firstName;
     private String lastName;
     private String birthDate;
