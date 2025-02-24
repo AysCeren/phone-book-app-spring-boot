@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class ContactResponseDTO {
+    private Long id;
     private String name;
     private String phoneNumber;
-    private Integer status;
+    //private Integer status; //gözüküyorsa bir olacağı için kesin göstermek gereksiz
+    private Long personId;
 }
