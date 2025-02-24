@@ -5,10 +5,7 @@
 
 package com.project.contactsdemo.controller;
 
-//import com.example.service.ContactService;
-import java.util.ArrayList;
 import java.util.List;
-
 import com.project.contactsdemo.entity.Contact;
 import com.project.contactsdemo.requestdto.ContactRequestDTO;
 import com.project.contactsdemo.requestdto.ContactResponseDTO;
@@ -18,8 +15,10 @@ import com.project.contactsdemo.service.PersonContactService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Validated
 @RestController
 @RequestMapping({"/api"})
 public class PersonContactController {
@@ -37,7 +36,7 @@ public class PersonContactController {
     )//model attribute
     public ResponseEntity<PersonResponseDTO> savePerson(@Valid @RequestBody PersonRequestDTO personRequestDTO) {
         this.personContactService.savePerson(personRequestDTO); //void, no response parameter
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>( HttpStatus.CREATED);
 
     }
 
@@ -45,7 +44,7 @@ public class PersonContactController {
             method = {RequestMethod.POST},
             path = {"/saveContact"}
     )
-    public ResponseEntity<ContactResponseDTO> saveContact(@RequestBody ContactRequestDTO savedContactRequestDTO) {
+    public ResponseEntity<ContactResponseDTO> saveContact(@Valid @RequestBody ContactRequestDTO savedContactRequestDTO) {
         this.personContactService.saveContact(savedContactRequestDTO); //void, no response parameter
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -57,20 +56,27 @@ public class PersonContactController {
     public ResponseEntity<List<PersonResponseDTO>> getAllPerson() {
         return new ResponseEntity<>(this.personContactService.getAllPerson(), HttpStatus.OK);
     }
+    @RequestMapping(
+            method = {RequestMethod.GET},
+            path = {"/getAllContact"}
+    )
+    public ResponseEntity<List<ContactResponseDTO>> getAllContact() {
+        return new ResponseEntity<>(this.personContactService.getAllContacts(), HttpStatus.OK);
+    }
 
 
     @RequestMapping(
-            method = {RequestMethod.DELETE},
-            path = {"/deleteContact"}
+            method = {RequestMethod.PUT},
+            path = {"/deleteContact/{contactId}"}
     )
-    public ResponseEntity<ContactResponseDTO> deleteContact(@Valid @RequestBody ContactRequestDTO contactRequestDTO) {
-        this.personContactService.deleteContact(contactRequestDTO); //void, no response parameter
+    public ResponseEntity<ContactResponseDTO> deleteContact(@Valid @PathVariable Long contactId) {
+        this.personContactService.deleteContact(contactId); //void, no response parameter
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping({"/contacts/"})
-    public ResponseEntity<Contact> updateContact( @RequestBody ContactRequestDTO contactRequestDTO) {
-        this.personContactService.updateContact(contactRequestDTO);
+    @PutMapping({"/updateContact/{id}"})
+    public ResponseEntity<Contact> updateContact( @Valid @RequestBody ContactRequestDTO contactRequestDTO, @PathVariable Long id) {
+        this.personContactService.updateContact(contactRequestDTO, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class PersonContactService {
+public class PersonContactService{
 
     private final PersonRepository personRepository;
     private final ContactRepository contactsRepository;
@@ -49,7 +49,17 @@ public class PersonContactService {
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     //because it is read-only method, I want it run as non-transactional
-    public List<PersonResponseDTO> getAllPerson() {List<Person> personList = new ArrayList<>(personRepository.findAll());
+    public List<ContactResponseDTO> getAllContacts() {
+        List<Contact> contactList = new ArrayList<>(contactsRepository.findAll());
+        if (contactList.isEmpty()) {
+            throw new NoDataFoundException("There is no person found");
+        }
+        return contactList.stream()
+                .filter(contact-> contact.getStatus() ==1)
+                .map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList());
+    }
+    public List<PersonResponseDTO> getAllPerson() {
+        List<Person> personList = new ArrayList<>(personRepository.findAll());
         if (personList.isEmpty()) {
             throw new NoDataFoundException("There is no person found");
         }
@@ -93,27 +103,26 @@ public class PersonContactService {
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void updateContact(ContactRequestDTO updatedContactRequestDTO) {
-        Optional<Contact> contact = contactsRepository.findById(contactMapper.fromContactRequestDTOToContactEntity(updatedContactRequestDTO).getId());
+    public void updateContact(ContactRequestDTO updatedContactRequestDTO, Long contactId) {
+        Optional<Contact> updatedContact = contactsRepository.findById(contactId);
         //TODO: Maybe using existById() is a better implementation.
-        if(contact.isPresent()) {
-            throw new NoDataFoundException("No such a contact to update");
+        if(updatedContact.isPresent()) {
+            Contact newOne = contactMapper.fromContactRequestDTOToContactEntity(updatedContactRequestDTO);
+            newOne.setId(updatedContact.get().getId());
+            contactsRepository.save(newOne);
         }
         else{
-            contact.get().setName(updatedContactRequestDTO.getName());
-            contact.get().setPhoneNo(updatedContactRequestDTO.getPhoneNumber());
-            contactsRepository.save(contact.get());
+            throw new NoDataFoundException("No such a contact to delete");
         }
     }
     @Transactional(propagation = Propagation.REQUIRED)
-    public void deleteContact(ContactRequestDTO deletedContactRequestDTO) {
-        Contact deletedContact = contactMapper.fromContactRequestDTOToContactEntity(deletedContactRequestDTO);
-        if(!contactsRepository.existsById(deletedContact.getId())){
+    public void deleteContact(Long contactId) {
+        Optional<Contact> deletedContact = contactsRepository.findById(contactId);
+        if(deletedContact.isPresent()) {
+            deletedContact.get().setStatus(0);
+            contactsRepository.save(deletedContact.get());
+        }else
             throw new NoDataFoundException("No such a contact to delete");
-        }else {
-            deletedContact.setStatus(0); //0: deleted, 1: exist
-            contactsRepository.save(deletedContact);
-        }
     }
     @Transactional(propagation = Propagation.REQUIRED)
     public List<PersonResponseDTO> getAllPersonWithContacts(){
@@ -123,7 +132,6 @@ public class PersonContactService {
         }else
             return personListWithContacts.stream().map(personMapper::fromPersonToPersonResponseDto).collect(Collectors.toList());
     }
-
     @Named("mapPersonIdToPerson")
     public Person mapPersonIdToPerson(Long personId) {
         if (personId == null) {
@@ -131,5 +139,10 @@ public class PersonContactService {
         }
         return personRepository.findById(personId).orElseThrow(() ->
                 new RuntimeException("No such a person: " + personId));
+    }
+    @Named("mapPersonToPersonId")
+    public Long mapPersonToPersonId(Person person) {
+        //person'un null olma durumu yok!
+        return person.getId();
     }
 }
