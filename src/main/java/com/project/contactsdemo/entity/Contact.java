@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Contact{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(
@@ -27,7 +27,6 @@ public class Contact{
 
     @Column(
             name = "contact_phone",
-            length = 15,
             nullable = true,
             unique = false
     )
@@ -38,6 +37,9 @@ public class Contact{
             nullable = false,
             columnDefinition ="Integer default 0"
     )
-    private Integer status;
+    private Integer status = 1; //default 1
 
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;  // This is the actual entity reference
 }
