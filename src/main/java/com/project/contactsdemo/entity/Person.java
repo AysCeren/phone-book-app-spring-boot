@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 @Setter
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(
@@ -57,10 +59,16 @@ public class Person {
 
     @Column(
             name = "phone_number",
-            nullable = false,
-            length = 15 //Note: Applies only if a string-valued column is used.
+            nullable = false
     )
     private String phoneNumber;
+
+    @Column(
+            name= "email",
+            nullable = true
+    )
+    @Email
+    private String email;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
