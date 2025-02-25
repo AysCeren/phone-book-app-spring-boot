@@ -1,8 +1,8 @@
 package com.project.contactsdemo.mapper;
 
 import com.project.contactsdemo.entity.Person;
-import com.project.contactsdemo.requestdto.PersonRequestDTO;
-import com.project.contactsdemo.requestdto.PersonResponseDTO;
+import com.project.contactsdemo.dto.PersonRequestDTO;
+import com.project.contactsdemo.dto.PersonResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -22,11 +22,17 @@ public interface PersonMapper {
     //This method takes Person Entity and maps them to Person ResponseDTO
     @Mapping (target = "birthDate", source = "birthDate")
     List<PersonResponseDTO> fromPersonToPersonResponseDto(List<Person> person);
-    @Mapping (target = "birthDate", source = "birthDate")
+    @Mapping (target = "birthDate", source = "birthDate", qualifiedByName = "LocalDateToString")
     PersonResponseDTO fromPersonToPersonResponseDto(Person person);
 
     @Named("stringToLocalDate")
     default LocalDate stringToLocalDate(String birthDate) { //it will automatically be used by "fromPersonRequestDTOToPersonEntity"
         return birthDate != null ? LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-yyyy")) : null;
+    }
+    @Named("LocalDateToString")
+    default String LocalDateToString(LocalDate birthDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String text = birthDate.format(formatter);System.out.println(text);
+        return text;
     }
 }
