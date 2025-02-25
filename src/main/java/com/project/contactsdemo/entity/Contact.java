@@ -3,6 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 package com.project.contactsdemo.entity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public class Contact{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(name = "Contact ID", example = "10" , required = true)
     private Long id;
 
     @Column(
@@ -23,6 +25,7 @@ public class Contact{
             nullable = false,
             unique = true
     )
+    @Schema(name = "Contact full name", example = "Ayse Ceren Coban", required = true)
     private String name;
 
     @Column(
@@ -30,6 +33,7 @@ public class Contact{
             nullable = true,
             unique = false
     )
+    @Schema(name = "Contact phone", example = "+905522568471", required = true)
     private String phoneNo;
 
     @Column(
@@ -37,6 +41,7 @@ public class Contact{
             nullable = false,
             columnDefinition ="Integer default 0"
     )
+    @Schema(name = "Contact status", example = "0", required = false)
     private Integer status = 1; //default 1
 
     @ManyToOne
