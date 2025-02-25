@@ -1,6 +1,5 @@
 package com.project.contactsdemo.validation;
 
-
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -9,19 +8,16 @@ import jakarta.validation.ConstraintValidatorContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-public class CorrectPhoneValidator implements ConstraintValidator<CorrectNumber,String> {
-    private final Logger log = LoggerFactory.getLogger(CorrectPhoneValidator.class);
+public class PhoneNumberValidator implements ConstraintValidator<ValidPhoneNumber, String> {
+    private final Logger log = LoggerFactory.getLogger(ValidPhoneNumber.class);
 
     @Override
-    public boolean isValid(String phoneNumber, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String phoneNumber, ConstraintValidatorContext context) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
-        Phonenumber.PhoneNumber phone;
-
-        if (phoneNumber == null) return true;
+        if (phoneNumber == null) return true; // Allow null values
 
         try {
-            phone = phoneNumberUtil.parse(phoneNumber, Phonenumber.PhoneNumber.CountryCodeSource.UNSPECIFIED.name());
+            Phonenumber.PhoneNumber phone = phoneNumberUtil.parse(phoneNumber, "TR"); // Change default country as needed
             return phoneNumberUtil.isValidNumber(phone);
         } catch (NumberParseException e) {
             log.error(e.getMessage());
