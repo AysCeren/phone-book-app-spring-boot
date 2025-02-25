@@ -1,4 +1,4 @@
-package com.project.contactsdemo.requestdto;
+package com.project.contactsdemo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

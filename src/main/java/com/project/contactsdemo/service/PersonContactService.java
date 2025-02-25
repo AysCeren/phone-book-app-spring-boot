@@ -5,13 +5,12 @@ import com.project.contactsdemo.entity.Person;
 import com.project.contactsdemo.exception.NoDataFoundException;
 import com.project.contactsdemo.repository.ContactRepository;
 import com.project.contactsdemo.repository.PersonRepository;
-import com.project.contactsdemo.requestdto.ContactRequestDTO;
-import com.project.contactsdemo.requestdto.ContactResponseDTO;
-import com.project.contactsdemo.requestdto.PersonRequestDTO;
+import com.project.contactsdemo.dto.ContactRequestDTO;
+import com.project.contactsdemo.dto.ContactResponseDTO;
+import com.project.contactsdemo.dto.PersonRequestDTO;
 import com.project.contactsdemo.mapper.*;
 //import jakarta.transaction.Transactional;
-import com.project.contactsdemo.requestdto.PersonResponseDTO;
-import jdk.jfr.Name;
+import com.project.contactsdemo.dto.PersonResponseDTO;
 import org.mapstruct.Named;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
@@ -94,14 +93,12 @@ public class PersonContactService{
         }
         return contactsForPerson.stream().map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList());
     }
-
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void saveContact(ContactRequestDTO saveContactRequestDto) {
         //öncelikle gelen contact'ın personId'sine bakalım
         Contact contact = contactMapper.fromContactRequestDTOToContactEntity(saveContactRequestDto);
         this.contactsRepository.save(contact);
     }
-
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateContact(ContactRequestDTO updatedContactRequestDTO, Long contactId) {
         Optional<Contact> updatedContact = contactsRepository.findById(contactId);
@@ -126,7 +123,7 @@ public class PersonContactService{
     }
     @Transactional(propagation = Propagation.REQUIRED)
     public List<PersonResponseDTO> getAllPersonWithContacts(){
-        List<Person> personListWithContacts = new ArrayList<>(personRepository.findAllWithContacts());
+        List<Person> personListWithContacts = personRepository.findAllWithContacts();
         if (personListWithContacts.isEmpty()) {
             throw new NoDataFoundException("No contacts found");
         }else

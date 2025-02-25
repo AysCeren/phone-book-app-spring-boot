@@ -2,8 +2,8 @@ package com.project.contactsdemo.mapper;
 
 import com.project.contactsdemo.entity.Contact;
 import com.project.contactsdemo.service.PersonContactService;
-import com.project.contactsdemo.requestdto.ContactRequestDTO;
-import com.project.contactsdemo.requestdto.ContactResponseDTO;
+import com.project.contactsdemo.dto.ContactRequestDTO;
+import com.project.contactsdemo.dto.ContactResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import java.util.List;
