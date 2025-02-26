@@ -1,5 +1,6 @@
 package com.project.contactsdemo.mapper;
 
+import com.project.contactsdemo.dto.PersonWithContactsDTO;
 import com.project.contactsdemo.entity.Person;
 import com.project.contactsdemo.dto.PersonRequestDTO;
 import com.project.contactsdemo.dto.PersonResponseDTO;
@@ -24,6 +25,7 @@ public interface PersonMapper {
     List<PersonResponseDTO> fromPersonToPersonResponseDto(List<Person> person);
     @Mapping (target = "birthDate", source = "birthDate", qualifiedByName = "LocalDateToString")
     PersonResponseDTO fromPersonToPersonResponseDto(Person person);
+    PersonWithContactsDTO fromPersonToPersonResponseForContactDTO(Person person);
 
     @Named("stringToLocalDate")
     default LocalDate stringToLocalDate(String birthDate) { //it will automatically be used by "fromPersonRequestDTOToPersonEntity"
