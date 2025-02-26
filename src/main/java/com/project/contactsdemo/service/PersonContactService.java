@@ -1,16 +1,13 @@
 package com.project.contactsdemo.service;
 
+import com.project.contactsdemo.dto.*;
 import com.project.contactsdemo.entity.Contact;
 import com.project.contactsdemo.entity.Person;
 import com.project.contactsdemo.exception.NoDataFoundException;
 import com.project.contactsdemo.repository.ContactRepository;
 import com.project.contactsdemo.repository.PersonRepository;
-import com.project.contactsdemo.dto.ContactRequestDTO;
-import com.project.contactsdemo.dto.ContactResponseDTO;
-import com.project.contactsdemo.dto.PersonRequestDTO;
 import com.project.contactsdemo.mapper.*;
 //import jakarta.transaction.Transactional;
-import com.project.contactsdemo.dto.PersonResponseDTO;
 import org.mapstruct.Named;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
@@ -122,12 +119,19 @@ public class PersonContactService{
             throw new NoDataFoundException("No such a contact to delete");
     }
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<PersonResponseDTO> getAllPersonWithContacts(){
+    public List<PersonWithContactsDTO> getAllPersonWithContacts(){
         List<Person> personListWithContacts = personRepository.findAllWithContacts();
         if (personListWithContacts.isEmpty()) {
             throw new NoDataFoundException("No contacts found");
         }else
-            return personListWithContacts.stream().map(personMapper::fromPersonToPersonResponseDto).collect(Collectors.toList());
+            //return personListWithContacts.stream().map(personMapper::fromPersonToPersonResponseForContactDTO).collect(Collectors.toList());
+            return personListWithContacts.stream()
+                    .map(person -> {
+                        PersonWithContactsDTO response = personMapper.fromPersonToPersonResponseForContactDTO(person);
+                        response.setMessage(response.getContacts().size() + " contacts for " + person.getFirstName() + " " + person.getLastName());
+                        return response;
+                    })
+                    .collect(Collectors.toList());
     }
     @Named("mapPersonIdToPerson")
     public Person mapPersonIdToPerson(Long personId) {

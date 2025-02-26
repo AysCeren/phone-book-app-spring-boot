@@ -6,11 +6,9 @@
 package com.project.contactsdemo.controller;
 
 import java.util.List;
+
+import com.project.contactsdemo.dto.*;
 import com.project.contactsdemo.entity.Contact;
-import com.project.contactsdemo.dto.ContactRequestDTO;
-import com.project.contactsdemo.dto.ContactResponseDTO;
-import com.project.contactsdemo.dto.PersonRequestDTO;
-import com.project.contactsdemo.dto.PersonResponseDTO;
 import com.project.contactsdemo.service.PersonContactService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -115,7 +113,7 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @GetMapping(path = "/getAllPersonWithContacts")
-    public ResponseEntity<List<PersonResponseDTO>> getAllPersonWithContacts() {
+    public ResponseEntity<List<PersonWithContactsDTO>> getAllPersonWithContacts() {
        return new ResponseEntity<>(personContactService.getAllPersonWithContacts(),HttpStatus.OK);
     }
 
