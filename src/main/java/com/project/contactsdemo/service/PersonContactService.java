@@ -45,14 +45,19 @@ public class PersonContactService{
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     //because it is read-only method, I want it run as non-transactional
-    public List<ContactResponseDTO> getAllContacts() {
+    public GenericDTO<List<ContactResponseDTO>> getAllContacts() {
         List<Contact> contactList = new ArrayList<>(contactsRepository.findAll());
         if (contactList.isEmpty()) {
             throw new NoDataFoundException("There is no person found");
         }
-        return contactList.stream()
+        List<ContactResponseDTO> x =  contactList.stream()
                 .filter(contact-> contact.getStatus() ==1)
                 .map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList());
+        GenericDTO<ContactResponseDTO> genericDTO = new GenericDTO<>();
+        genericDTO.setBody((ContactResponseDTO) x);
+        genericDTO.setErrorStatus(0);
+        genericDTO.setErrorMessage(null);
+        return genericDTO;
     }
     public List<PersonResponseDTO> getAllPerson() {
         List<Person> personList = new ArrayList<>(personRepository.findAll());
