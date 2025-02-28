@@ -99,14 +99,13 @@ public class PersonContactService{
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateContact(ContactRequestDTO updatedContactRequestDTO, Long contactId) {
         Optional<Contact> updatedContact = contactsRepository.findById(contactId);
-        //TODO: Maybe using existById() is a better implementation.
         if(updatedContact.isPresent()) {
             Contact newOne = contactMapper.fromContactRequestDTOToContactEntity(updatedContactRequestDTO);
             newOne.setId(updatedContact.get().getId());
             contactsRepository.save(newOne);
         }
         else{
-            throw new NoDataFoundException("No such a contact to delete");
+            throw new NoDataFoundException("No such a contact to update");
         }
     }
     @Transactional(propagation = Propagation.REQUIRED)
@@ -133,13 +132,14 @@ public class PersonContactService{
                     })
                     .collect(Collectors.toList());
     }
+
     @Named("mapPersonIdToPerson")
     public Person mapPersonIdToPerson(Long personId) {
         if (personId == null) {
             return null;
         }
         return personRepository.findById(personId).orElseThrow(() ->
-                new RuntimeException("No such a person: " + personId));
+                new NoDataFoundException("No such a person: " + personId)); //bunu RunTimeException'dan NoData'ya çevirdim. Önemli!
     }
     @Named("mapPersonToPersonId")
     public Long mapPersonToPersonId(Person person) {
