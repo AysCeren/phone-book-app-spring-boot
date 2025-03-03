@@ -38,10 +38,11 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.POST}, path = {"/savePerson"})
-    public ResponseEntity<PersonResponseDTO> savePerson(@Valid @RequestBody PersonRequestDTO personRequestDTO) {
-        this.personContactService.savePerson(personRequestDTO); //void, no response parameter
-        return new ResponseEntity<>( HttpStatus.CREATED);
-
+    public ResponseEntity savePerson(@Valid @RequestBody PersonRequestDTO personRequestDTO) {
+        GenericDTO genericDTO =  this.personContactService.savePerson(personRequestDTO); //void, no response parameter
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(genericDTO);
     }
 
     @Operation( summary= "Save/Create new contact", description = "Save/Create new contact by giving properties(requestDto) as JSON, working with POST!")
@@ -52,9 +53,11 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.POST}, path = {"/saveContact"})
-    public ResponseEntity<ContactResponseDTO> saveContact(@Valid @RequestBody ContactRequestDTO savedContactRequestDTO) {
-        this.personContactService.saveContact(savedContactRequestDTO); //void, no response parameter
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<GenericDTO> saveContact(@Valid @RequestBody ContactRequestDTO savedContactRequestDTO) {
+        GenericDTO genericDto = this.personContactService.saveContact(savedContactRequestDTO); //void, no response parameter
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(genericDto);
     }
 
     @Operation( summary= "Get all person", description = "Get all person from person table, working with GET!")
@@ -63,10 +66,11 @@ public class PersonContactController {
             @ApiResponse(responseCode = "404", description = "Not found - No person was not found"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
-    //TODO: Runtime errorlar için ApiResponse yazılacaklar!
     @RequestMapping(method = {RequestMethod.GET}, path = {"/getAllPerson"})
-    public ResponseEntity<List<PersonResponseDTO>> getAllPerson() {
-        return new ResponseEntity<>(this.personContactService.getAllPerson(), HttpStatus.OK);
+    public ResponseEntity<GenericDTO<List<PersonResponseDTO>>> getAllPerson() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(personContactService.getAllPerson()); //body içerisinde döndüm generic DTO'yu
     }
 
     @Operation( summary= "Get all contact", description = "Get all contact from contact table, working with GET!")
@@ -76,8 +80,10 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping( method = {RequestMethod.GET},path = {"/getAllContact"})
-    public ResponseEntity<List<ContactResponseDTO>> getAllContact() {
-        return new ResponseEntity<>(this.personContactService.getAllContacts(), HttpStatus.OK);
+    public ResponseEntity<GenericDTO<List<ContactResponseDTO>>> getAllContact() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(personContactService.getAllContacts());
     }
 
     @Operation( summary= "Delete contact", description = "Safe delete for specific contact(the id will be given), then status from 1 --> 0")
@@ -88,9 +94,11 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.PUT},path = {"/deleteContact/{contactId}"})
-    public ResponseEntity<ContactResponseDTO> deleteContact(@Valid @PathVariable("contactId") @Parameter(name="contactId", description = "Id of Contact to delete", example = "1") Long contactId) {
-        this.personContactService.deleteContact(contactId); //void, no response parameter
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<GenericDTO<ContactResponseDTO>> deleteContact(@Valid @PathVariable("contactId") @Parameter(name="contactId", description = "Id of Contact to delete", example = "1") Long contactId) {
+        GenericDTO<ContactResponseDTO> genericDto = this.personContactService.deleteContact(contactId); //void, no response parameter
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(genericDto);
     }
 
     @Operation( summary= "Update contact", description = "Update the contact(the id will be taken")
@@ -101,9 +109,12 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @PutMapping({"/updateContact/{id}"})
-    public ResponseEntity<Contact> updateContact( @Valid @RequestBody ContactRequestDTO contactRequestDTO, @Valid @PathVariable("id") @Parameter(name="id", description = "Contact id to find and then delete", example = "1") Long id) {
-        this.personContactService.updateContact(contactRequestDTO, id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<GenericDTO<ContactResponseDTO>> updateContact( @Valid @RequestBody ContactRequestDTO contactRequestDTO, @Valid @PathVariable("id") @Parameter(name="id", description = "Contact id to find and then delete", example = "1") Long id) {
+        GenericDTO<ContactResponseDTO> dto  = new GenericDTO<>();
+        GenericDTO<ContactResponseDTO> genericDto = personContactService.updateContact(contactRequestDTO, id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(genericDto);
     }
 
     @Operation( summary= "Get all person with contact", description = "Get all person with their contacts from person and contact table, working with GET!")
@@ -113,8 +124,11 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @GetMapping(path = "/getAllPersonWithContacts")
-    public ResponseEntity<List<PersonWithContactsDTO>> getAllPersonWithContacts() {
-       return new ResponseEntity<>(personContactService.getAllPersonWithContacts(),HttpStatus.OK);
+    public ResponseEntity<GenericDTO<List<PersonWithContactsDTO>>> getAllPersonWithContacts() {
+       GenericDTO<List<PersonWithContactsDTO>> dto = personContactService.getAllPersonWithContacts();
+        return ResponseEntity
+               .status(HttpStatus.OK)
+                .body(dto);
     }
 
     @Operation( summary= "Get all person", description = "Get one person with its all contact")
@@ -125,7 +139,10 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @GetMapping("/getAllContactsOfPerson/{id}")
-    public ResponseEntity<List<ContactResponseDTO>> getAllContactsOfPerson(@Valid @PathVariable("id") @Parameter(name="id", description = "Person id to find person", example = "1") Long id) {
-        return new ResponseEntity<>(personContactService.getAllContactsOfPerson(id),HttpStatus.OK);
+    public ResponseEntity<GenericDTO<List<ContactResponseDTO>>> getAllContactsOfPerson(@Valid @PathVariable("id") @Parameter(name="id", description = "Person id to find person", example = "1") Long id) {
+        GenericDTO<List<ContactResponseDTO>> genericDTO = personContactService.getAllContactsOfPerson(id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(genericDTO);
     }
 }
