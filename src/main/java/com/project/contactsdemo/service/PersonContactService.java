@@ -38,9 +38,10 @@ public class PersonContactService{
 
     //TODO: Transactional'lara yalıtım ve yayılma ekleyelim.
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void savePerson(PersonRequestDTO savePersonRequestDto) {
+    public GenericDTO savePerson(PersonRequestDTO savePersonRequestDto) {
         Person person = personMapper.fromPersonRequestDTOToPersonEntity(savePersonRequestDto);
         this.personRepository.save(person);
+        return new GenericDTO();
     }
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
@@ -50,94 +51,92 @@ public class PersonContactService{
         if (contactList.isEmpty()) {
             throw new NoDataFoundException("There is no person found");
         }
-        List<ContactResponseDTO> x =  contactList.stream()
+        List<ContactResponseDTO> allContacts =  contactList.stream()
                 .filter(contact-> contact.getStatus() ==1)
                 .map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList());
-        GenericDTO<ContactResponseDTO> genericDTO = new GenericDTO<>();
-        genericDTO.setBody((ContactResponseDTO) x);
-        genericDTO.setErrorStatus(0);
-        genericDTO.setErrorMessage(null);
+        GenericDTO<List<ContactResponseDTO>> genericDTO = new GenericDTO<>();
+        genericDTO.setBody(allContacts);
         return genericDTO;
     }
-    public List<PersonResponseDTO> getAllPerson() {
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public GenericDTO<List<PersonResponseDTO>> getAllPerson() {
         List<Person> personList = new ArrayList<>(personRepository.findAll());
         if (personList.isEmpty()) {
             throw new NoDataFoundException("There is no person found");
         }
-        //for-each ile tarama
-        return personList.stream().map(personMapper::fromPersonToPersonResponseDto).collect(Collectors.toList());
+        List<PersonResponseDTO> allPerson= personList.stream().map(personMapper::fromPersonToPersonResponseDto).collect(Collectors.toList());
+        GenericDTO<List<PersonResponseDTO>> genericDTO = new GenericDTO<>();
+        genericDTO.setBody(allPerson);
+        return genericDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<ContactResponseDTO> getAllContactsOfPerson(Long personId){
-        /*Optional<Person> person = personRepository.findById(personId);
-        if (person.isPresent()) {
-            List<Contact> contactList = person.get().getContacts();
-            if (contactList.isEmpty()) {
-                throw new TrainingException("No contacts found for " + personId);
-            }
-            return contactList;
-        }
-        throw new TrainingException("No such a person id with: " + personId);*/
-        /*
-        if(!personRepository.existsById(personId)){
-            throw new TrainingException("No such a person with id "+personId);
-        }
-        List<Contact> contactList = new ArrayList<>(contactsRepository.findByPersonId(personId));
-        if (contactList.isEmpty()) {
-            throw new TrainingException("No contacts found");
-        }
-        return contactList;
-         */
+    public GenericDTO<List<ContactResponseDTO>> getAllContactsOfPerson(Long personId){
         List<Contact> contactsForPerson = new ArrayList<>(contactsRepository.findContactsByPersonId(personId));
         if (contactsForPerson.isEmpty()) {
             throw new NoDataFoundException("No contacts found for person id: " + personId);
         }
-        return contactsForPerson.stream().map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList());
+        GenericDTO<List<ContactResponseDTO>> genericDTO = new GenericDTO<>();
+        genericDTO.setBody(contactsForPerson.stream().map(contactMapper::fromContactEntityToContactResponseDTO).collect(Collectors.toList()));
+        return genericDTO;
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void saveContact(ContactRequestDTO saveContactRequestDto) {
+    public GenericDTO saveContact(ContactRequestDTO saveContactRequestDto) {
         //öncelikle gelen contact'ın personId'sine bakalım
         Contact contact = contactMapper.fromContactRequestDTOToContactEntity(saveContactRequestDto);
         this.contactsRepository.save(contact);
+        return new GenericDTO();
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void updateContact(ContactRequestDTO updatedContactRequestDTO, Long contactId) {
+    public GenericDTO<ContactResponseDTO> updateContact(ContactRequestDTO updatedContactRequestDTO, Long contactId) {
         Optional<Contact> updatedContact = contactsRepository.findById(contactId);
         if(updatedContact.isPresent()) {
             Contact newOne = contactMapper.fromContactRequestDTOToContactEntity(updatedContactRequestDTO);
             newOne.setId(updatedContact.get().getId());
             contactsRepository.save(newOne);
+            GenericDTO<ContactResponseDTO> genericDTO = new GenericDTO<>();
+            genericDTO.setBody(contactMapper.fromContactEntityToContactResponseDTO(newOne));
+            return genericDTO;
+            //TODO: Burada neden newOne yaparak aldığımızı bulalım.
         }
         else{
             throw new NoDataFoundException("No such a contact to update");
         }
     }
     @Transactional(propagation = Propagation.REQUIRED)
-    public void deleteContact(Long contactId) {
+    public GenericDTO<ContactResponseDTO> deleteContact(Long contactId) {
         Optional<Contact> deletedContact = contactsRepository.findById(contactId);
         if(deletedContact.isPresent()) {
+            if(deletedContact.get().getStatus() == 0) { //already deleted
+                throw new NoDataFoundException("No such a contact to delete");
+            }
             deletedContact.get().setStatus(0);
             contactsRepository.save(deletedContact.get());
+            GenericDTO<ContactResponseDTO> genericDTO = new GenericDTO<>();
+            genericDTO.setBody(contactMapper.fromContactEntityToContactResponseDTO(deletedContact.get()));
+            return genericDTO;
         }else
             throw new NoDataFoundException("No such a contact to delete");
     }
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<PersonWithContactsDTO> getAllPersonWithContacts(){
+    public GenericDTO<List<PersonWithContactsDTO>> getAllPersonWithContacts(){
         List<Person> personListWithContacts = personRepository.findAllWithContacts();
         if (personListWithContacts.isEmpty()) {
             throw new NoDataFoundException("No contacts found");
-        }else
+        }else{
+            GenericDTO<List<PersonWithContactsDTO>> genericDTO = new GenericDTO<>();
             //return personListWithContacts.stream().map(personMapper::fromPersonToPersonResponseForContactDTO).collect(Collectors.toList());
-            return personListWithContacts.stream()
+            genericDTO.setBody(personListWithContacts.stream()
                     .map(person -> {
                         PersonWithContactsDTO response = personMapper.fromPersonToPersonResponseForContactDTO(person);
                         response.setMessage(response.getContacts().size() + " contacts for " + person.getFirstName() + " " + person.getLastName());
                         return response;
                     })
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()));
+            return genericDTO;
+        }
     }
-
     @Named("mapPersonIdToPerson")
     public Person mapPersonIdToPerson(Long personId) {
         if (personId == null) {
