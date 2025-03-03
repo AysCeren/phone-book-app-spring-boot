@@ -2,6 +2,7 @@ package com.project.contactsdemo.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.ValidationException;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,7 +16,7 @@ public class BirthdateValidator implements ConstraintValidator<ValidBirthdate, S
     @Override
     public boolean isValid(String birthDateStr, ConstraintValidatorContext context) {
         if (birthDateStr == null || birthDateStr.trim().isEmpty()) {
-            return false; // Birthdate cannot be null or empty
+            throw new ValidationException("Birthdate cannot be empty"); // Birthdate cannot be null or empty
         }
 
         try {
@@ -25,7 +26,7 @@ public class BirthdateValidator implements ConstraintValidator<ValidBirthdate, S
             // Ensure the birthdate is in the past and the person are at least 18 years old
             return !birthDate.isAfter(today) && Period.between(birthDate, today).getYears() >= MIN_AGE;
         } catch (DateTimeParseException e) {
-            return false; // Invalid date format
+            throw new ValidationException("Doğum tarihi şimdiki zamandan büyük olamaz"); // Invalid date format
         }
     }
 }
