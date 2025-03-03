@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class GenericDTO<T>  {
     T body;
-    int errorStatus;
-    String errorMessage;
+    int errorStatus = 0; //eğer error varsa bu exception handler'da yazılacak
+    String errorMessage = null; //eğer error varsa bu exception handler'da doldurulacak
+    //Amacç: daha az setter çağırmak
 }
