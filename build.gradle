@@ -48,6 +48,10 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 	//Apache Commons IO
 	implementation 'commons-io:commons-io:2.11.0'
+	//implementation('org.apache.tomcat:tomcat-catalina:10.1.16')
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+
 }
 
 tasks.named('test') {
