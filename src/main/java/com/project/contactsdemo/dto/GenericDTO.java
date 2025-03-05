@@ -8,8 +8,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GenericDTO<T>  {
-    T body;
-    int errorStatus = 0; //eğer error varsa bu exception handler'da yazılacak
-    String errorMessage = null; //eğer error varsa bu exception handler'da doldurulacak
+    private T body;
+    private int errorStatus; //eğer error varsa bu exception handler'da yazılacak
+    private String errorMessage; //eğer error varsa bu exception handler'da doldurulacak
     //Amacç: daha az setter çağırmak
+
+
+    public GenericDTO(int errorStatus, String errorMessage) {
+        this.errorStatus = errorStatus;
+        this.errorMessage = errorMessage;
+    }
+
+    public GenericDTO(T body, int errorStatus) {
+        this.body = body;
+        this.errorStatus = errorStatus;
+    }
 }
