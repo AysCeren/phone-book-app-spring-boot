@@ -12,7 +12,6 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 import java.util.UUID;
 
@@ -20,14 +19,10 @@ import java.util.UUID;
 public class LoggingFilter extends OncePerRequestFilter {
     //Logger instance for logging
     private static final Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
-// private final ServerHttpRequest();
-
-
+    // private final ServerHttpRequest();
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-
-
 //        req.getHeaders().get("client-ip");
         String requestId = UUID.randomUUID().toString();
         request.setAttribute("RequestID", requestId);
@@ -37,7 +32,7 @@ public class LoggingFilter extends OncePerRequestFilter {
                 request.getRequestURI(),
                 getRequestHeaders(request),
                 requestId,
-                request.getRemoteAddr());
+                request.getRemoteAddr()); //for ip?
 
         long startTime = System.currentTimeMillis();  // Capture the start time to measure processing duration.
 
@@ -68,7 +63,6 @@ public class LoggingFilter extends OncePerRequestFilter {
                 .forEachRemaining(header -> headers.append(header).append("=").append(request.getHeader(header)).append("; "));
         return headers.toString();
     }
-
     // Utility method to extract response headers for logging.
     private String getResponseHeaders(HttpServletResponse response) {
         StringBuilder headers = new StringBuilder();
