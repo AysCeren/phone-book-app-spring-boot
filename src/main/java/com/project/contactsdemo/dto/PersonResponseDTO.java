@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Data
-public class PersonResponseDTO {
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String birthDate;
-    private String birthCity;
+    public class PersonResponseDTO {
+        private Long id;
+        private String firstName;
+        private String lastName;
+        private String birthDate;
+        private String birthCity; //TODO: RestTemplate sonrası burayı şehir adı olarak basacağız
 }

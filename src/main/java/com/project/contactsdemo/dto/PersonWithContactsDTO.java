@@ -14,5 +14,6 @@ public class PersonWithContactsDTO {
     private String lastName;
     private String phoneNumber;
     private String message;
+    private String birthCity;
     private List<ContactForPersonDTO> contacts;
 }
