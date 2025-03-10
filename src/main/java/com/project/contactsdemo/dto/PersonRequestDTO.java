@@ -6,6 +6,7 @@ import com.project.contactsdemo.validation.ValidGender;
 import com.project.contactsdemo.validation.ValidName;
 import com.project.contactsdemo.validation.ValidPhoneNumber;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -37,7 +38,7 @@ public class PersonRequestDTO {
 
     @Schema(name = "gender", example = "FEMALE")
     @ValidGender
-    private Gender gender;
+    private String gender;
 
     @ValidPhoneNumber
     @Schema(name = "phoneNumber", example = "+905522568471")
