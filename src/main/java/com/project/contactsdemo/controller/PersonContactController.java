@@ -10,6 +10,7 @@ import java.util.List;
 import com.project.contactsdemo.dto.*;
 import com.project.contactsdemo.entity.Contact;
 import com.project.contactsdemo.service.PersonContactService;
+//import com.project.contactsdemo.validation.ValidContactInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -31,6 +32,13 @@ public class PersonContactController {
         this.personContactService = personContactService;
     }
 
+    @GetMapping(path = "/restTemplateControl/{ilKodu}")
+    public ResponseEntity<GenericDTO<String>> getPersonWithId(@Valid @PathVariable("ilKodu") @Parameter(name="ilKodu", example = "6") String ilKodu) {
+        GenericDTO<String> gDTO = personContactService.getPersonWithId(ilKodu);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(gDTO);
+    }
     @Operation( summary= "Save/Create new person", description = "Save/Create new person by giving properties as JSON, working with POST!")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successfully saved new person."),
@@ -38,8 +46,8 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.POST}, path = {"/savePerson"})
-    public ResponseEntity savePerson(@Valid @RequestBody PersonRequestDTO personRequestDTO) {
-        GenericDTO genericDTO =  this.personContactService.savePerson(personRequestDTO); //void, no response parameter
+    public ResponseEntity<GenericDTO<PersonResponseDTO>> savePerson(@Valid @RequestBody PersonRequestDTO personRequestDTO) {
+        GenericDTO<PersonResponseDTO> genericDTO =  this.personContactService.savePerson(personRequestDTO); //void, no response parameter
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(genericDTO);
@@ -53,8 +61,8 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.POST}, path = {"/saveContact"})
-    public ResponseEntity<GenericDTO> saveContact(@Valid @RequestBody ContactRequestDTO savedContactRequestDTO) {
-        GenericDTO genericDto = this.personContactService.saveContact(savedContactRequestDTO); //void, no response parameter
+    public ResponseEntity<GenericDTO<ContactResponseDTO>> saveContact(@Valid @RequestBody ContactRequestDTO savedContactRequestDTO) {
+        GenericDTO<ContactResponseDTO> genericDto = this.personContactService.saveContact(savedContactRequestDTO); //void, no response parameter
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(genericDto);
@@ -80,7 +88,7 @@ public class PersonContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping( method = {RequestMethod.GET},path = {"/getAllContact"})
-    public ResponseEntity<GenericDTO<List<ContactResponseDTO>>> getAllContact() {
+    public ResponseEntity<GenericDTO<List<ContactResponseDTO>>> getAllContact() { //? ne gelirse gelsin //<> //Void: type'ı belli ama void typeinde
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(personContactService.getAllContacts());
@@ -110,7 +118,7 @@ public class PersonContactController {
     })
     @PutMapping({"/updateContact/{id}"})
     public ResponseEntity<GenericDTO<ContactResponseDTO>> updateContact( @Valid @RequestBody ContactRequestDTO contactRequestDTO, @Valid @PathVariable("id") @Parameter(name="id", description = "Contact id to find and then delete", example = "1") Long id) {
-        GenericDTO<ContactResponseDTO> dto  = new GenericDTO<>();
+        GenericDTO<ContactResponseDTO> dto  = new GenericDTO<>(0,null);
         GenericDTO<ContactResponseDTO> genericDto = personContactService.updateContact(contactRequestDTO, id);
         return ResponseEntity
                 .status(HttpStatus.OK)
