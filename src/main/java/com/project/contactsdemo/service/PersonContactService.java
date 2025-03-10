@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class PersonContactService{
 
-    private final String  serviceUrl = "http://siciltest.gelbim.gov.tr:32158/mernis-cache/mernis-il/get-with-ilkodu?ilKodu=" ;
+    private final String  serviceUrl = "http://siciltest.gelbim.gov.tr:32158/mernis-cache/mernis-il/get-with-ilkodu" ;
     private final PersonRepository personRepository;
     private final ContactRepository contactsRepository;
     private final PersonMapper personMapper;
@@ -173,6 +173,7 @@ public class PersonContactService{
 
     @Named("birthCityName")
     public String birthCityName(String birthCity) {
+        //URI builder
         CityResponseDTO cityResponseDTO = restTemplate.getForObject(serviceUrl+birthCity, CityResponseDTO.class, birthCity);
         return Objects.requireNonNull(cityResponseDTO).getIlAdi();
     }
