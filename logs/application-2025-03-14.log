@@ -1,0 +1,497 @@
+14:15:21.331 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+14:15:21.431 [main] INFO  c.p.c.ContactsdemoApplication - Starting ContactsdemoApplication using Java 17.0.12 with PID 34276 (C:\Ayse Ceren - crud projects\contactsdemo\build\classes\java\main started by 16381136672 in C:\Ayse Ceren - crud projects\contactsdemo)
+14:15:21.431 [main] INFO  c.p.c.ContactsdemoApplication - No active profile set, falling back to 1 default profile: "default"
+14:15:22.850 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14:15:22.945 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 2 JPA repository interfaces.
+14:15:23.859 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14:15:23.875 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:15:23.875 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:15:23.875 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+14:15:23.970 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:15:23.970 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2452 ms
+14:15:24.244 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:15:24.352 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.9.Final
+14:15:24.403 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14:15:24.741 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14:15:24.775 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:15:24.971 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48aa0813
+14:15:24.976 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:15:25.032 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14:15:26.414 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:15:26.552 [main] WARN  c.h.i.impl.HazelcastInstanceFactory - Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+14:15:26.552 [main] INFO  c.h.i.config.AbstractConfigLocator - Loading 'hazelcast-default.xml' from the classpath.
+14:15:27.088 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Prefer IPv4 stack is true, prefer IPv6 addresses is false
+14:15:27.119 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Picked [10.251.34.15]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+14:15:27.134 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Hazelcast 4.0.1 (20200409 - e086b9c) starting at [10.251.34.15]:5701
+14:15:27.134 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
+14:15:27.386 [main] INFO  c.h.s.i.o.impl.BackpressureRegulator - [10.251.34.15]:5701 [dev] [4.1] Backpressure is disabled
+14:15:27.699 [main] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Creating MulticastJoiner
+14:15:27.699 [main] WARN  com.hazelcast.cp.CPSubsystem - [10.251.34.15]:5701 [dev] [4.1] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+14:15:27.976 [main] INFO  c.h.s.i.o.impl.OperationExecutorImpl - [10.251.34.15]:5701 [dev] [4.1] Starting 16 partition threads and 9 generic threads (1 dedicated for priority tasks)
+14:15:27.976 [main] INFO  c.h.internal.diagnostics.Diagnostics - [10.251.34.15]:5701 [dev] [4.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:15:27.994 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTING
+14:15:30.832 [main] INFO  c.h.internal.cluster.ClusterService - [10.251.34.15]:5701 [dev] [4.1] 
+
+Members {size:1, ver:1} [
+	Member [10.251.34.15]:5701 - 0184e702-21e0-41dd-bb9d-c257d35bfba5 this
+]
+
+14:15:30.847 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTED
+14:15:30.912 [main] INFO  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Running with 2 response threads, dynamic=true
+14:15:30.948 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTING
+14:15:30.948 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTED
+14:15:30.988 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:15:30.991 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [127.0.0.1]:5701
+14:15:31.012 [hz.kind_ptolemy.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=1, /127.0.0.1:5701->/127.0.0.1:56563, qualifier=null, endpoint=[127.0.0.1]:56563, alive=true, connectionType=JVM], successfully authenticated, clientUuid: f0f7aa28-8ea5-43f5-bbdd-feb34906e064, client version: 4.0.1
+14:15:31.012 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:15:31.012 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:0184e702-21e0-41dd-bb9d-c257d35bfba5, server version: 4.0.1, local address: /127.0.0.1:56563
+14:15:31.025 [main] INFO  c.h.internal.diagnostics.Diagnostics - training-instance [dev] [4.1] [4.0.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:15:31.031 [training-instance.event-10] INFO  c.h.c.impl.spi.ClientClusterService - training-instance [dev] [4.1] [4.0.1] 
+
+Members [1] {
+	Member [10.251.34.15]:5701 - 0184e702-21e0-41dd-bb9d-c257d35bfba5
+}
+
+14:15:31.057 [main] INFO  c.h.c.i.s.ClientStatisticsService - Client statistics is enabled with period 5 seconds.
+14:15:31.281 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:15:32.371 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+14:15:32.893 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14:15:32.931 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:15:32.962 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14:15:32.972 [main] INFO  c.p.c.ContactsdemoApplication - Started ContactsdemoApplication in 12.173 seconds (process running for 13.512)
+14:15:33.318 [RMI TCP Connection(4)-10.251.34.15] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:15:33.318 [RMI TCP Connection(4)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:15:33.331 [RMI TCP Connection(4)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:39:38.183 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/2, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=f25a4dd1-f98f-468a-9a4c-54f7860cc3aa; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: 93a45a8c-bbc2-4303-9ae5-0fd0d1d9b803, Request IP  =0:0:0:0:0:0:0:1
+14:39:38.390 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/2, Duration (Response Time)=206ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@476ddff2
+14:41:51.359 [hz.ShutdownThread] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Running shutdown hook... Current state: ACTIVE
+14:41:51.359 [hz.ShutdownThread] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is SHUTTING_DOWN
+14:41:51.588 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14:41:51.591 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14:41:51.591 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:42:05.829 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+14:42:05.884 [main] INFO  c.p.c.ContactsdemoApplication - Starting ContactsdemoApplication using Java 17.0.12 with PID 17256 (C:\Ayse Ceren - crud projects\contactsdemo\build\classes\java\main started by 16381136672 in C:\Ayse Ceren - crud projects\contactsdemo)
+14:42:05.885 [main] INFO  c.p.c.ContactsdemoApplication - No active profile set, falling back to 1 default profile: "default"
+14:42:07.044 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14:42:07.116 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65 ms. Found 2 JPA repository interfaces.
+14:42:07.893 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14:42:07.904 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:42:07.905 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:42:07.906 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+14:42:07.983 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:42:07.984 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2043 ms
+14:42:08.237 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:42:08.303 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.9.Final
+14:42:08.342 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14:42:08.611 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14:42:08.651 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:42:08.820 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2862271a
+14:42:08.821 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:42:08.860 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14:42:10.151 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:42:10.303 [main] WARN  c.h.i.impl.HazelcastInstanceFactory - Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+14:42:10.305 [main] INFO  c.h.i.config.AbstractConfigLocator - Loading 'hazelcast-default.xml' from the classpath.
+14:42:10.711 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Prefer IPv4 stack is true, prefer IPv6 addresses is false
+14:42:10.736 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Picked [10.251.34.15]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+14:42:10.753 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Hazelcast 4.0.1 (20200409 - e086b9c) starting at [10.251.34.15]:5701
+14:42:10.754 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
+14:42:10.925 [main] INFO  c.h.s.i.o.impl.BackpressureRegulator - [10.251.34.15]:5701 [dev] [4.1] Backpressure is disabled
+14:42:11.176 [main] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Creating MulticastJoiner
+14:42:11.181 [main] WARN  com.hazelcast.cp.CPSubsystem - [10.251.34.15]:5701 [dev] [4.1] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+14:42:11.401 [main] INFO  c.h.s.i.o.impl.OperationExecutorImpl - [10.251.34.15]:5701 [dev] [4.1] Starting 16 partition threads and 9 generic threads (1 dedicated for priority tasks)
+14:42:11.419 [main] INFO  c.h.internal.diagnostics.Diagnostics - [10.251.34.15]:5701 [dev] [4.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:42:11.426 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTING
+14:42:14.315 [main] INFO  c.h.internal.cluster.ClusterService - [10.251.34.15]:5701 [dev] [4.1] 
+
+Members {size:1, ver:1} [
+	Member [10.251.34.15]:5701 - b2c7811b-22bb-4e19-94bf-8e921afc4bb0 this
+]
+
+14:42:14.327 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTED
+14:42:14.376 [main] INFO  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Running with 2 response threads, dynamic=true
+14:42:14.411 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTING
+14:42:14.413 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTED
+14:42:14.453 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:42:14.455 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [127.0.0.1]:5701
+14:42:14.480 [hz.vigorous_grothendieck.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=1, /127.0.0.1:5701->/127.0.0.1:57741, qualifier=null, endpoint=[127.0.0.1]:57741, alive=true, connectionType=JVM], successfully authenticated, clientUuid: ce5907df-e355-4597-9839-b6d7b13c6b83, client version: 4.0.1
+14:42:14.483 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:42:14.483 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:b2c7811b-22bb-4e19-94bf-8e921afc4bb0, server version: 4.0.1, local address: /127.0.0.1:57741
+14:42:14.488 [main] INFO  c.h.internal.diagnostics.Diagnostics - training-instance [dev] [4.1] [4.0.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:42:14.495 [training-instance.event-9] INFO  c.h.c.impl.spi.ClientClusterService - training-instance [dev] [4.1] [4.0.1] 
+
+Members [1] {
+	Member [10.251.34.15]:5701 - b2c7811b-22bb-4e19-94bf-8e921afc4bb0
+}
+
+14:42:14.531 [main] INFO  c.h.c.i.s.ClientStatisticsService - Client statistics is enabled with period 5 seconds.
+14:42:14.740 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:42:15.827 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+14:42:16.264 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14:42:16.303 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:42:16.336 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14:42:16.350 [main] INFO  c.p.c.ContactsdemoApplication - Started ContactsdemoApplication in 11.004 seconds (process running for 12.75)
+14:42:47.838 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:42:47.838 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:42:47.839 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:42:47.850 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:42:47.851 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/2, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=fee6e1eb-9192-4678-b54e-ea7bc8612c24; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: aacdf893-1aa4-49db-b17e-bf11626be6ff, Request IP  =0:0:0:0:0:0:0:1
+14:42:47.948 [http-nio-8080-exec-2] INFO  c.h.i.p.impl.PartitionStateManager - [10.251.34.15]:5701 [dev] [4.1] Initializing cluster partition table arrangement...
+14:42:48.223 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/2, Duration (Response Time)=372ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@6c5d4b75
+14:42:57.309 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:42:57.310 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:42:57.310 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:42:57.310 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:42:57.310 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:42:57.310 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:42:57.311 [http-nio-8080-exec-3] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/2, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=1a34d8aa-a412-4231-8592-e19143d42520; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: f3a8ff0b-be7f-4dd1-8d9e-5659f77f9c29, Request IP  =0:0:0:0:0:0:0:1
+14:42:57.326 [http-nio-8080-exec-3] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/2, Duration (Response Time)=15ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@2a0634d2
+14:44:42.319 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14:44:42.322 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14:44:42.327 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:44:48.368 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+14:44:48.421 [main] INFO  c.p.c.ContactsdemoApplication - Starting ContactsdemoApplication using Java 17.0.12 with PID 7460 (C:\Ayse Ceren - crud projects\contactsdemo\build\classes\java\main started by 16381136672 in C:\Ayse Ceren - crud projects\contactsdemo)
+14:44:48.422 [main] INFO  c.p.c.ContactsdemoApplication - No active profile set, falling back to 1 default profile: "default"
+14:44:49.610 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14:44:49.705 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 84 ms. Found 2 JPA repository interfaces.
+14:44:50.526 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14:44:50.537 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:44:50.539 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:44:50.539 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+14:44:50.623 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:44:50.624 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2140 ms
+14:44:50.886 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:44:50.955 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.9.Final
+14:44:50.996 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14:44:51.263 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14:44:51.294 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:44:51.452 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@29db008c
+14:44:51.454 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:44:51.490 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14:44:52.717 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:44:53.980 [main] WARN  c.h.i.impl.HazelcastInstanceFactory - Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+14:44:53.989 [main] INFO  c.h.i.config.AbstractConfigLocator - Loading 'hazelcast-default.xml' from the classpath.
+14:44:55.040 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Prefer IPv4 stack is true, prefer IPv6 addresses is false
+14:44:55.084 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Picked [10.251.34.15]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+14:44:55.128 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Hazelcast 4.0.1 (20200409 - e086b9c) starting at [10.251.34.15]:5701
+14:44:55.128 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
+14:44:56.144 [main] INFO  c.h.s.i.o.impl.BackpressureRegulator - [10.251.34.15]:5701 [dev] [4.1] Backpressure is disabled
+14:44:57.164 [main] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Creating MulticastJoiner
+14:44:57.175 [main] WARN  com.hazelcast.cp.CPSubsystem - [10.251.34.15]:5701 [dev] [4.1] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+14:44:57.853 [main] INFO  c.h.s.i.o.impl.OperationExecutorImpl - [10.251.34.15]:5701 [dev] [4.1] Starting 16 partition threads and 9 generic threads (1 dedicated for priority tasks)
+14:44:57.870 [main] INFO  c.h.internal.diagnostics.Diagnostics - [10.251.34.15]:5701 [dev] [4.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:44:57.898 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTING
+14:45:00.824 [main] INFO  c.h.internal.cluster.ClusterService - [10.251.34.15]:5701 [dev] [4.1] 
+
+Members {size:1, ver:1} [
+	Member [10.251.34.15]:5701 - baf21df1-cbf1-4c52-901f-6ddffb900fb4 this
+]
+
+14:45:00.865 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTED
+14:45:01.013 [main] INFO  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Running with 2 response threads, dynamic=true
+14:45:01.258 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTING
+14:45:01.262 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTED
+14:45:01.304 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:45:01.310 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [127.0.0.1]:5701
+14:45:01.383 [hz.agitated_davinci.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=1, /127.0.0.1:5701->/127.0.0.1:57867, qualifier=null, endpoint=[127.0.0.1]:57867, alive=true, connectionType=JVM], successfully authenticated, clientUuid: b20be87e-c82f-4971-95f3-9e8f92a1974a, client version: 4.0.1
+14:45:01.390 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:45:01.390 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:baf21df1-cbf1-4c52-901f-6ddffb900fb4, server version: 4.0.1, local address: /127.0.0.1:57867
+14:45:01.399 [main] INFO  c.h.internal.diagnostics.Diagnostics - training-instance [dev] [4.1] [4.0.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:45:01.411 [training-instance.event-7] INFO  c.h.c.impl.spi.ClientClusterService - training-instance [dev] [4.1] [4.0.1] 
+
+Members [1] {
+	Member [10.251.34.15]:5701 - baf21df1-cbf1-4c52-901f-6ddffb900fb4
+}
+
+14:45:01.465 [main] INFO  c.h.c.i.s.ClientStatisticsService - Client statistics is enabled with period 5 seconds.
+14:45:01.794 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:45:03.979 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+14:45:04.829 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14:45:04.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:45:04.952 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14:45:04.978 [main] INFO  c.p.c.ContactsdemoApplication - Started ContactsdemoApplication in 17.097 seconds (process running for 18.878)
+14:45:05.837 [RMI TCP Connection(3)-10.251.34.15] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:45:05.837 [RMI TCP Connection(3)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:45:05.838 [RMI TCP Connection(3)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+14:45:09.926 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:45:09.926 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:45:09.926 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:45:09.926 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:45:09.926 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:45:09.927 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:45:09.929 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/3, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=ef6f582f-d3e0-471a-8458-8400f73b3256; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: 14771e29-0708-48f1-97ed-902cf3b416d6, Request IP  =0:0:0:0:0:0:0:1
+14:45:26.904 [http-nio-8080-exec-2] INFO  c.h.i.p.impl.PartitionStateManager - [10.251.34.15]:5701 [dev] [4.1] Initializing cluster partition table arrangement...
+14:45:55.982 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=400, URI=/api/getAllContactsOfPerson/3, Duration (Response Time)=46053ms, Headers=[Content-Type, Transfer-Encoding, Date, Connection], Payload = org.apache.catalina.connector.ResponseFacade@459b9666
+14:46:22.712 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:46:22.713 [http-nio-8080-exec-4] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/1, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=d5a45ba7-f612-43cc-8280-1f0b8e9d6e09; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: 49119804-bd14-461d-bbdc-ac1d7a4ae827, Request IP  =0:0:0:0:0:0:0:1
+14:47:12.287 [hz.agitated_davinci.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 11703 ms
+14:47:24.157 [http-nio-8080-exec-4] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/1, Duration (Response Time)=61444ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@7a3d08ea
+14:47:43.641 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:47:43.642 [http-nio-8080-exec-5] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/1, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=deb1df23-bae5-4af6-9f93-e526720c0248; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: a5f1b47d-0c8a-4817-b819-15f7d63e3243, Request IP  =0:0:0:0:0:0:0:1
+14:48:15.255 [http-nio-8080-exec-5] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/1, Duration (Response Time)=31613ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@61f77c4a
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:48:23.771 [http-nio-8080-exec-7] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/1, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=0ed15421-ae55-4c4d-8ed1-eaee9592b20c; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: 75f39f4a-e0cc-44cf-8900-adaa9ae1d0ba, Request IP  =0:0:0:0:0:0:0:1
+14:50:12.379 [hz.agitated_davinci.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 89627 ms
+14:50:12.379 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m42s478ms471µs200ns).
+14:50:12.380 [hz.agitated_davinci.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] BroadcastOperationControlTask delayed 87479 ms
+14:50:12.434 [hz.agitated_davinci.cached.thread-38] WARN  c.h.i.c.impl.ClusterHeartbeatManager - [10.251.34.15]:5701 [dev] [4.1] Resetting heartbeat timestamps because of huge system clock jump! Clock-Jump: 88607 ms, Heartbeat-Timeout: 60000 ms
+14:50:12.439 [training-instance.internal-2] WARN  c.h.c.i.c.nio.HeartbeatManager - training-instance [dev] [4.1] [4.0.1] Heartbeat failed over the connection: ClientConnection{alive=true, connectionId=1, channel=NioChannel{/127.0.0.1:57867->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:48:38.832, lastWriteTime=2025-03-14 14:50:12.435, closedTime=never, connected server version=4.0.1}
+14:50:12.445 [http-nio-8080-exec-7] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/1, Duration (Response Time)=108672ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@743e5282
+14:50:12.439 [training-instance.internal-2] WARN  c.h.c.i.c.nio.ClientConnection - training-instance [dev] [4.1] [4.0.1] ClientConnection{alive=false, connectionId=1, channel=NioChannel{/127.0.0.1:57867->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:50:12.438, lastWriteTime=2025-03-14 14:50:12.435, closedTime=2025-03-14 14:50:12.439, connected server version=4.0.1} closed. Reason: Heartbeat timed out
+com.hazelcast.spi.exception.TargetDisconnectedException: Heartbeat timed out to connection ClientConnection{alive=true, connectionId=1, channel=NioChannel{/127.0.0.1:57867->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:50:12.438, lastWriteTime=2025-03-14 14:50:12.435, closedTime=never, connected server version=4.0.1}
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.onHeartbeatStopped(HeartbeatManager.java:101)
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.checkConnection(HeartbeatManager.java:89)
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.run(HeartbeatManager.java:77)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:64)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:80)
+14:50:12.446 [training-instance.internal-2] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Removed connection to endpoint: [10.251.34.15]:5701:baf21df1-cbf1-4c52-901f-6ddffb900fb4, connection: ClientConnection{alive=false, connectionId=1, channel=NioChannel{/127.0.0.1:57867->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:50:12.438, lastWriteTime=2025-03-14 14:50:12.445, closedTime=2025-03-14 14:50:12.439, connected server version=4.0.1}
+14:50:12.446 [hz.agitated_davinci.IO.thread-in-0] INFO  c.h.internal.nio.tcp.TcpIpConnection - [10.251.34.15]:5701 [dev] [4.1] Connection[id=1, /127.0.0.1:5701->/127.0.0.1:57867, qualifier=null, endpoint=[127.0.0.1]:57867, alive=false, connectionType=JVM] closed. Reason: Connection closed by the other side
+14:50:12.446 [training-instance.internal-2] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_DISCONNECTED
+14:50:12.448 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:50:12.449 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [10.251.34.15]:5701
+14:50:12.448 [hz.agitated_davinci.cached.thread-27] INFO  c.h.c.impl.ClientEndpointManager - [10.251.34.15]:5701 [dev] [4.1] Destroying ClientEndpoint{connection=Connection[id=1, /127.0.0.1:5701->/127.0.0.1:57867, qualifier=null, endpoint=[127.0.0.1]:57867, alive=false, connectionType=JVM], clientUuid='b20be87e-c82f-4971-95f3-9e8f92a1974a, authenticated=true, clientVersion=4.0.1, creationTime=1741952701372, latest clientAttributes=lastStatisticsCollectionTime=1741953012440,enterprise=false,clientType=JVM,clientVersion=4.0.1,clusterConnectionTimestamp=1741952701337,clientAddress=127.0.0.1,clientName=training-instance,credentials.principal=null,os.committedVirtualMemorySize=0,os.freePhysicalMemorySize=15222951936,os.freeSwapSpaceSize=0,os.maxFileDescriptorCount=0,os.openFileDescriptorCount=0,os.processCpuTime=0,os.systemLoadAverage=-1.0,os.totalPhysicalMemorySize=34358550528,os.totalSwapSpaceSize=0,runtime.availableProcessors=16,runtime.freeMemory=31794392,runtime.maxMemory=8589934592,runtime.totalMemory=125829120,runtime.uptime=326344,runtime.usedMemory=94034728,executionService.userExecutorQueueSize=0}
+14:50:12.451 [hz.agitated_davinci.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=2, /10.251.34.15:5701->/10.251.34.15:58099, qualifier=null, endpoint=[10.251.34.15]:58099, alive=true, connectionType=JVM], successfully authenticated, clientUuid: b20be87e-c82f-4971-95f3-9e8f92a1974a, client version: 4.0.1
+14:50:12.452 [training-instance.internal-7] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:50:12.452 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:baf21df1-cbf1-4c52-901f-6ddffb900fb4, server version: 4.0.1, local address: /10.251.34.15:58099
+14:50:12.495 [hz.ShutdownThread] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Running shutdown hook... Current state: ACTIVE
+14:50:12.732 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14:50:12.735 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14:50:12.739 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:50:28.509 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+14:50:28.564 [main] INFO  c.p.c.ContactsdemoApplication - Starting ContactsdemoApplication using Java 17.0.12 with PID 35672 (C:\Ayse Ceren - crud projects\contactsdemo\build\classes\java\main started by 16381136672 in C:\Ayse Ceren - crud projects\contactsdemo)
+14:50:28.565 [main] INFO  c.p.c.ContactsdemoApplication - No active profile set, falling back to 1 default profile: "default"
+14:50:29.900 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14:50:30.000 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 91 ms. Found 2 JPA repository interfaces.
+14:50:30.949 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14:50:30.960 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:50:30.962 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:50:30.963 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+14:50:31.053 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:50:31.055 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2430 ms
+14:50:31.328 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:50:31.397 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.9.Final
+14:50:31.441 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14:50:31.727 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14:50:31.762 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:50:31.968 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e1ad7de
+14:50:31.970 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:50:32.012 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14:50:33.394 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:50:34.791 [main] WARN  c.h.i.impl.HazelcastInstanceFactory - Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+14:50:34.800 [main] INFO  c.h.i.config.AbstractConfigLocator - Loading 'hazelcast-default.xml' from the classpath.
+14:50:35.838 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Prefer IPv4 stack is true, prefer IPv6 addresses is false
+14:50:35.884 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Picked [10.251.34.15]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+14:50:35.928 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Hazelcast 4.0.1 (20200409 - e086b9c) starting at [10.251.34.15]:5701
+14:50:35.928 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
+14:50:36.912 [main] INFO  c.h.s.i.o.impl.BackpressureRegulator - [10.251.34.15]:5701 [dev] [4.1] Backpressure is disabled
+14:50:37.862 [main] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Creating MulticastJoiner
+14:50:37.875 [main] WARN  com.hazelcast.cp.CPSubsystem - [10.251.34.15]:5701 [dev] [4.1] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+14:50:38.429 [main] INFO  c.h.s.i.o.impl.OperationExecutorImpl - [10.251.34.15]:5701 [dev] [4.1] Starting 16 partition threads and 9 generic threads (1 dedicated for priority tasks)
+14:50:38.445 [main] INFO  c.h.internal.diagnostics.Diagnostics - [10.251.34.15]:5701 [dev] [4.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:50:38.473 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTING
+14:50:41.114 [main] INFO  c.h.internal.cluster.ClusterService - [10.251.34.15]:5701 [dev] [4.1] 
+
+Members {size:1, ver:1} [
+	Member [10.251.34.15]:5701 - 539150e6-b79b-4f4e-a81e-cf372df9bc7f this
+]
+
+14:50:41.155 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTED
+14:50:41.293 [main] INFO  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Running with 2 response threads, dynamic=true
+14:50:41.570 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTING
+14:50:41.573 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTED
+14:50:41.611 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:50:41.616 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [127.0.0.1]:5701
+14:50:41.690 [hz.blissful_carson.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=1, /127.0.0.1:5701->/127.0.0.1:58131, qualifier=null, endpoint=[127.0.0.1]:58131, alive=true, connectionType=JVM], successfully authenticated, clientUuid: b737493b-cbb2-4b6f-bbff-1dff471b0bef, client version: 4.0.1
+14:50:41.698 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:50:41.699 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:539150e6-b79b-4f4e-a81e-cf372df9bc7f, server version: 4.0.1, local address: /127.0.0.1:58131
+14:50:41.709 [main] INFO  c.h.internal.diagnostics.Diagnostics - training-instance [dev] [4.1] [4.0.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:50:41.722 [training-instance.event-10] INFO  c.h.c.impl.spi.ClientClusterService - training-instance [dev] [4.1] [4.0.1] 
+
+Members [1] {
+	Member [10.251.34.15]:5701 - 539150e6-b79b-4f4e-a81e-cf372df9bc7f
+}
+
+14:50:41.772 [main] INFO  c.h.c.i.s.ClientStatisticsService - Client statistics is enabled with period 5 seconds.
+14:50:42.129 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:50:44.250 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+14:50:45.187 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14:50:45.269 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:50:45.317 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14:50:45.343 [main] INFO  c.p.c.ContactsdemoApplication - Started ContactsdemoApplication in 17.411 seconds (process running for 19.154)
+14:50:51.036 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:50:51.036 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:50:51.038 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+14:50:51.081 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:50:51.082 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:50:51.082 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:50:51.082 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:50:51.082 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:50:51.082 [http-nio-8080-exec-2] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:50:51.084 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/1, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=bfb40f57-f570-41ed-a2d6-94dbc03d0d82; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: f2ddfb00-0c86-47ce-a415-cd5ad1991741, Request IP  =0:0:0:0:0:0:0:1
+14:50:59.862 [http-nio-8080-exec-2] INFO  c.h.i.p.impl.PartitionStateManager - [10.251.34.15]:5701 [dev] [4.1] Initializing cluster partition table arrangement...
+14:51:09.733 [http-nio-8080-exec-2] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/1, Duration (Response Time)=18649ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@2bf9cbee
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header user-agent=0:0:0:0:0:0:0:1, IP = user-agent
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header accept=0:0:0:0:0:0:0:1, IP = accept
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header postman-token=0:0:0:0:0:0:0:1, IP = postman-token
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header host=0:0:0:0:0:0:0:1, IP = host
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header accept-encoding=0:0:0:0:0:0:0:1, IP = accept-encoding
+14:51:20.337 [http-nio-8080-exec-3] INFO  c.p.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
+14:51:20.338 [http-nio-8080-exec-3] INFO  c.p.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllContactsOfPerson/1, Headers=user-agent=PostmanRuntime/7.43.0; accept=*/*; postman-token=3728d931-1e99-4456-b5c2-4e8b8f307947; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: b9bb277c-46e9-4418-aacc-4a2883655c7c, Request IP  =0:0:0:0:0:0:0:1
+14:51:51.498 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 12932 ms
+14:51:51.499 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] BroadcastOperationControlTask delayed 12646 ms
+14:52:09.999 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 15233 ms
+14:52:24.320 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 11999 ms
+14:54:30.801 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 98810 ms
+14:54:30.801 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m48s352ms427µs200ns).
+14:54:30.801 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] BroadcastOperationControlTask delayed 93354 ms
+14:54:30.807 [training-instance.internal-1] WARN  c.h.c.i.c.nio.HeartbeatManager - training-instance [dev] [4.1] [4.0.1] Heartbeat failed over the connection: ClientConnection{alive=true, connectionId=1, channel=NioChannel{/127.0.0.1:58131->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:52:49.874, lastWriteTime=2025-03-14 14:54:30.804, closedTime=never, connected server version=4.0.1}
+14:54:31.874 [hz.blissful_carson.cached.thread-30] WARN  c.h.i.c.impl.ClusterHeartbeatManager - [10.251.34.15]:5701 [dev] [4.1] Resetting heartbeat timestamps because of huge system clock jump! Clock-Jump: 97004 ms, Heartbeat-Timeout: 60000 ms
+14:55:06.102 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] MonitorInvocationsTask delayed 33232 ms
+14:55:06.102 [hz.blissful_carson.InvocationMonitorThread] WARN  c.h.s.i.o.impl.InvocationMonitor - [10.251.34.15]:5701 [dev] [4.1] BroadcastOperationControlTask delayed 20299 ms
+14:55:06.116 [http-nio-8080-exec-3] INFO  c.p.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllContactsOfPerson/1, Duration (Response Time)=225778ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@5f5dd959
+14:54:30.808 [training-instance.internal-1] WARN  c.h.c.i.c.nio.ClientConnection - training-instance [dev] [4.1] [4.0.1] ClientConnection{alive=false, connectionId=1, channel=NioChannel{/127.0.0.1:58131->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:52:49.874, lastWriteTime=2025-03-14 14:54:30.804, closedTime=2025-03-14 14:54:30.808, connected server version=4.0.1} closed. Reason: Heartbeat timed out
+com.hazelcast.spi.exception.TargetDisconnectedException: Heartbeat timed out to connection ClientConnection{alive=true, connectionId=1, channel=NioChannel{/127.0.0.1:58131->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:52:49.874, lastWriteTime=2025-03-14 14:54:30.804, closedTime=never, connected server version=4.0.1}
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.onHeartbeatStopped(HeartbeatManager.java:101)
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.checkConnection(HeartbeatManager.java:89)
+	at com.hazelcast.client.impl.connection.nio.HeartbeatManager.run(HeartbeatManager.java:77)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:64)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:80)
+14:55:06.108 [training-instance.internal-3] WARN  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Future.complete(Object) on completed future. Request: ClientMessage{connection=null, length=2483, operation=Client.Statistics, isRetryable=false, correlationId=40, messageType=c00, isEvent=false, isfragmented=false}, current value: ClientMessage{connection=ClientConnection{alive=false, connectionId=1, channel=NioChannel{/127.0.0.1:58131->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:54:31.875, lastWriteTime=2025-03-14 14:55:06.104, closedTime=2025-03-14 14:54:30.808, connected server version=4.0.1}, length=19, operation=null, isRetryable=false, correlationId=40, messageType=c01, isEvent=false, isfragmented=false}, offered value: ExceptionalResult{cause=com.hazelcast.spi.exception.TargetDisconnectedException: Heartbeat timed out}
+java.lang.Exception: null
+	at com.hazelcast.spi.impl.AbstractInvocationFuture.warnIfSuspiciousDoubleCompletion(AbstractInvocationFuture.java:1213)
+	at com.hazelcast.spi.impl.AbstractInvocationFuture.complete0(AbstractInvocationFuture.java:1194)
+	at com.hazelcast.spi.impl.AbstractInvocationFuture.completeExceptionallyInternal(AbstractInvocationFuture.java:1187)
+	at com.hazelcast.spi.impl.AbstractInvocationFuture.completeExceptionally(AbstractInvocationFuture.java:658)
+	at com.hazelcast.client.impl.spi.impl.ClientInvocation.completeExceptionally(ClientInvocation.java:248)
+	at com.hazelcast.client.impl.spi.impl.ClientInvocation.notifyException(ClientInvocation.java:265)
+	at com.hazelcast.client.impl.spi.impl.ClientInvocationServiceImpl$CleanResourcesTask.notifyException(ClientInvocationServiceImpl.java:311)
+	at com.hazelcast.client.impl.spi.impl.ClientInvocationServiceImpl$CleanResourcesTask.run(ClientInvocationServiceImpl.java:301)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:64)
+	at com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:80)
+14:55:06.149 [hz.blissful_carson.IO.thread-in-0] INFO  c.h.internal.nio.tcp.TcpIpConnection - [10.251.34.15]:5701 [dev] [4.1] Connection[id=1, /127.0.0.1:5701->/127.0.0.1:58131, qualifier=null, endpoint=[127.0.0.1]:58131, alive=false, connectionType=JVM] closed. Reason: Connection closed by the other side
+14:55:06.149 [training-instance.internal-1] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Removed connection to endpoint: [10.251.34.15]:5701:539150e6-b79b-4f4e-a81e-cf372df9bc7f, connection: ClientConnection{alive=false, connectionId=1, channel=NioChannel{/127.0.0.1:58131->/127.0.0.1:5701}, remoteEndpoint=[10.251.34.15]:5701, lastReadTime=2025-03-14 14:55:06.148, lastWriteTime=2025-03-14 14:55:06.146, closedTime=2025-03-14 14:54:30.808, connected server version=4.0.1}
+14:55:06.150 [training-instance.internal-1] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_DISCONNECTED
+14:55:06.151 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:55:06.151 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [10.251.34.15]:5701
+14:55:06.152 [hz.blissful_carson.cached.thread-21] INFO  c.h.c.impl.ClientEndpointManager - [10.251.34.15]:5701 [dev] [4.1] Destroying ClientEndpoint{connection=Connection[id=1, /127.0.0.1:5701->/127.0.0.1:58131, qualifier=null, endpoint=[127.0.0.1]:58131, alive=false, connectionType=JVM], clientUuid='b737493b-cbb2-4b6f-bbff-1dff471b0bef, authenticated=true, clientVersion=4.0.1, creationTime=1741953041680, latest clientAttributes=lastStatisticsCollectionTime=1741953306142,enterprise=false,clientType=JVM,clientVersion=4.0.1,clusterConnectionTimestamp=1741953041641,clientAddress=127.0.0.1,clientName=training-instance,credentials.principal=null,os.committedVirtualMemorySize=0,os.freePhysicalMemorySize=15037620224,os.freeSwapSpaceSize=0,os.maxFileDescriptorCount=0,os.openFileDescriptorCount=0,os.processCpuTime=0,os.systemLoadAverage=-1.0,os.totalPhysicalMemorySize=34358550528,os.totalSwapSpaceSize=0,runtime.availableProcessors=16,runtime.freeMemory=44702032,runtime.maxMemory=8589934592,runtime.totalMemory=113246208,runtime.uptime=279955,runtime.usedMemory=68544176,executionService.userExecutorQueueSize=0}
+14:55:06.154 [hz.blissful_carson.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=2, /10.251.34.15:5701->/10.251.34.15:58277, qualifier=null, endpoint=[10.251.34.15]:58277, alive=true, connectionType=JVM], successfully authenticated, clientUuid: b737493b-cbb2-4b6f-bbff-1dff471b0bef, client version: 4.0.1
+14:55:06.156 [training-instance.internal-7] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:55:06.156 [training-instance.internal-7] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:539150e6-b79b-4f4e-a81e-cf372df9bc7f, server version: 4.0.1, local address: /10.251.34.15:58277
+14:55:06.453 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14:55:06.460 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14:55:06.465 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:55:11.016 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+14:55:11.074 [main] INFO  c.p.c.ContactsdemoApplication - Starting ContactsdemoApplication using Java 17.0.12 with PID 31076 (C:\Ayse Ceren - crud projects\contactsdemo\build\classes\java\main started by 16381136672 in C:\Ayse Ceren - crud projects\contactsdemo)
+14:55:11.075 [main] INFO  c.p.c.ContactsdemoApplication - No active profile set, falling back to 1 default profile: "default"
+14:55:12.357 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14:55:12.463 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 97 ms. Found 2 JPA repository interfaces.
+14:55:13.373 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14:55:13.383 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:55:13.385 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:55:13.385 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+14:55:13.470 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:55:13.470 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2321 ms
+14:55:13.755 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:55:13.825 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.9.Final
+14:55:13.870 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14:55:14.167 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14:55:14.206 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:55:14.384 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35260785
+14:55:14.386 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:55:14.423 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14:55:15.763 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:55:17.211 [main] WARN  c.h.i.impl.HazelcastInstanceFactory - Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+14:55:17.218 [main] INFO  c.h.i.config.AbstractConfigLocator - Loading 'hazelcast-default.xml' from the classpath.
+14:55:18.195 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Prefer IPv4 stack is true, prefer IPv6 addresses is false
+14:55:18.237 [main] INFO  c.hazelcast.instance.AddressPicker - [LOCAL] [dev] [4.1] Picked [10.251.34.15]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+14:55:18.280 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Hazelcast 4.0.1 (20200409 - e086b9c) starting at [10.251.34.15]:5701
+14:55:18.280 [main] INFO  com.hazelcast.system - [10.251.34.15]:5701 [dev] [4.1] Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
+14:55:19.207 [main] INFO  c.h.s.i.o.impl.BackpressureRegulator - [10.251.34.15]:5701 [dev] [4.1] Backpressure is disabled
+14:55:20.154 [main] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Creating MulticastJoiner
+14:55:20.168 [main] WARN  com.hazelcast.cp.CPSubsystem - [10.251.34.15]:5701 [dev] [4.1] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+14:55:20.728 [main] INFO  c.h.s.i.o.impl.OperationExecutorImpl - [10.251.34.15]:5701 [dev] [4.1] Starting 16 partition threads and 9 generic threads (1 dedicated for priority tasks)
+14:55:20.743 [main] INFO  c.h.internal.diagnostics.Diagnostics - [10.251.34.15]:5701 [dev] [4.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:55:20.768 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTING
+14:55:23.380 [main] INFO  c.h.internal.cluster.ClusterService - [10.251.34.15]:5701 [dev] [4.1] 
+
+Members {size:1, ver:1} [
+	Member [10.251.34.15]:5701 - 97d7b5fb-cdfe-4435-871a-45e5ce65970f this
+]
+
+14:55:23.416 [main] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is STARTED
+14:55:23.548 [main] INFO  c.h.c.i.spi.ClientInvocationService - training-instance [dev] [4.1] [4.0.1] Running with 2 response threads, dynamic=true
+14:55:23.795 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTING
+14:55:23.799 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is STARTED
+14:55:23.850 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to cluster: dev
+14:55:23.859 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Trying to connect to [127.0.0.1]:5701
+14:55:23.993 [hz.unruffled_jackson.priority-generic-operation.thread-0] INFO  c.h.c.i.p.t.AuthenticationMessageTask - [10.251.34.15]:5701 [dev] [4.1] Received auth from Connection[id=1, /127.0.0.1:5701->/127.0.0.1:58309, qualifier=null, endpoint=[127.0.0.1]:58309, alive=true, connectionType=JVM], successfully authenticated, clientUuid: 806f21ba-881c-42b4-b51b-56163de1759d, client version: 4.0.1
+14:55:24.004 [main] INFO  com.hazelcast.core.LifecycleService - training-instance [dev] [4.1] [4.0.1] HazelcastClient 4.0.1 (20200409 - e086b9c) is CLIENT_CONNECTED
+14:55:24.004 [main] INFO  c.h.c.i.c.ClientConnectionManager - training-instance [dev] [4.1] [4.0.1] Authenticated with server [10.251.34.15]:5701:97d7b5fb-cdfe-4435-871a-45e5ce65970f, server version: 4.0.1, local address: /127.0.0.1:58309
+14:55:24.021 [main] INFO  c.h.internal.diagnostics.Diagnostics - training-instance [dev] [4.1] [4.0.1] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+14:55:24.035 [training-instance.event-6] INFO  c.h.c.impl.spi.ClientClusterService - training-instance [dev] [4.1] [4.0.1] 
+
+Members [1] {
+	Member [10.251.34.15]:5701 - 97d7b5fb-cdfe-4435-871a-45e5ce65970f
+}
+
+14:55:24.101 [main] INFO  c.h.c.i.s.ClientStatisticsService - Client statistics is enabled with period 5 seconds.
+14:55:24.603 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:55:27.422 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+14:55:28.470 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14:55:28.562 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:55:28.615 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14:55:28.643 [main] INFO  c.p.c.ContactsdemoApplication - Started ContactsdemoApplication in 18.121 seconds (process running for 19.626)
+14:55:29.568 [RMI TCP Connection(5)-10.251.34.15] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:55:29.569 [RMI TCP Connection(5)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:55:29.571 [RMI TCP Connection(5)-10.251.34.15] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
