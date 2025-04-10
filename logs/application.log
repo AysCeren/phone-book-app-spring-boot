@@ -394,3 +394,8 @@ Members [1] {
 10:42:10.959 [http-nio-8080-exec-5] INFO  c.p.c.c.f.HeadersLoggingFilter - Header connection=0:0:0:0:0:0:0:1, IP = connection
 10:42:10.960 [http-nio-8080-exec-5] INFO  c.p.c.c.loggingfilter.LoggingFilter - Request: Method=GET, URI=/api/getAllPersonWithContacts, Headers=user-agent=PostmanRuntime/7.43.3; accept=*/*; postman-token=18e3343f-6f3f-4972-988b-d84317d6fe37; host=localhost:8080; accept-encoding=gzip, deflate, br; connection=keep-alive; , Request ID: 25acd5b7-e949-400d-a945-0334ce1ddf8c, Request IP  =0:0:0:0:0:0:0:1
 10:42:11.170 [http-nio-8080-exec-5] INFO  c.p.c.c.loggingfilter.LoggingFilter - Response: Status=200, URI=/api/getAllPersonWithContacts, Duration (Response Time)=210ms, Headers=[Content-Type, Transfer-Encoding, Date, Keep-Alive, Connection], Payload = org.apache.catalina.connector.ResponseFacade@3dd1dee5
+10:50:57.430 [hz.ShutdownThread] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Running shutdown hook... Current state: ACTIVE
+10:50:57.432 [hz.ShutdownThread] INFO  com.hazelcast.core.LifecycleService - [10.251.34.15]:5701 [dev] [4.1] [10.251.34.15]:5701 is SHUTTING_DOWN
+10:50:57.663 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:50:57.666 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+10:50:57.672 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
