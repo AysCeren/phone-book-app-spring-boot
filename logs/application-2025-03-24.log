@@ -1,0 +1,4 @@
+09:27:40.442 [hz.ShutdownThread] INFO  com.hazelcast.instance.impl.Node - [10.251.34.15]:5701 [dev] [4.1] Running shutdown hook... Current state: ACTIVE
+09:27:40.727 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+09:27:40.744 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+09:27:40.749 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

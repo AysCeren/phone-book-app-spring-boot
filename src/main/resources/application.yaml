@@ -14,8 +14,13 @@ spring:
         current_session_context_class: thread
         format_sql: 'true'
     hibernate:
-      ddl-auto: update
+      ddl-auto: none #bu kısım çok önemli
+      # tells Hibernate to keep away from modifying the database schema because this is Liquibase’s job now.
     show-sql: 'false' #hibernate sorgularının console'da görünür olması ya da olmaması
+  liquibase:
+    change-log: classpath:/db/master.xml
+    default-schema: public
+    liquibase-schema: public
   application:
     name: contactsdemo
   mvc:
@@ -31,3 +36,30 @@ logging:
 
   file:
     name: myapplication.log
+
+#set up a circuit breaker configuration
+resilience4j.circuitbreaker:
+  instances:
+    exampleService:
+      registerHealthIndicator: true
+      #Either COUNT_BASED or TIME_BASED
+      slidingWindowType: count_based
+      #The number of calls to consider the circuit breaker's state. Last 'x' calls will be monitored to decide on status.
+      slidingWindowSize: '10'
+      #The minimum number of calls required before the circuit breaker evaluates its state
+      minimumNumberOfCalls: '5'
+      #Percentage! if 50% percent of calls fail, the circuit will 'OPEN'
+      failureRateThreshold: '50'
+      #The amount of time (in milliseconds) the circuit breaker will stay in the open state before moving to half-open.
+      waitDurationInOpenState: 10000s
+      # The number of test calls permitted when in the half-open state.
+      permittedNumberOfCallsInHalfOpenState: '3'
+      #Defines the percentage threshold of slow calls required to open the circuit
+      slowCallRateThreshold: '50'
+      #Specifies the duration threshold in milliseconds to classify a call as “slow"
+      slowCallDurationThreshold: 2000
+      ignoreExceptions:
+        com.project.contactsdemo.core.exception.NoDataFoundException
+  configs:
+    default:
+        register-health-indicator: 'true'

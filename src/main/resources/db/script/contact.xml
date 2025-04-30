@@ -1,0 +1,28 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202503211100" author="16381136672">
+        <createSequence sequenceName="contact_id_seq"/>
+        <createTable tableName="contact">
+                <column name="id" type="BIGINT" defaultValueSequenceNext="contact_id_seq"> <!--öncesinde autoIncrement="true"-->
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="contact_name" type="VARCHAR(100)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="contact_phone" type="VARCHAR(20)">
+                    <constraints unique="true"/>
+                </column>
+                <column name="contact_status" type="INTEGER" defaultValueNumeric="1">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="person_id" type="BIGINT">
+                    <constraints nullable="false" foreignKeyName="fk_contacts_person" referencedTableName="person" referencedColumnNames="id"/>
+                </column>
+            </createTable>
+        </changeSet>
+
+</databaseChangeLog>
+
