@@ -54,4 +54,12 @@ public class GlobalExceptionHandler{
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(errorGenericDTO);
     }
+    @ExceptionHandler({RateLimitException.class})
+    public ResponseEntity<?> handleRateLimitException(RateLimitException exception) {
+        GenericDTO<Void> errorGenericDTO =new GenericDTO<>(null,1);
+        errorGenericDTO.setErrorMessage(exception.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.TOO_MANY_REQUESTS)
+                .body(errorGenericDTO);
+    }
 }

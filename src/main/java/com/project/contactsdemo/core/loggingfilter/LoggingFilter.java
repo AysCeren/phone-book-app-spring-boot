@@ -28,7 +28,7 @@ public class LoggingFilter extends OncePerRequestFilter {
                 request.getRequestURI(),
                 getRequestHeaders(request),
                 requestId,
-                request.getRemoteAddr()); //for ip?
+                request.getRemoteAddr()); //kendi localimden localime ulaştığım için :0:0:0:...
 
         long startTime = System.currentTimeMillis();  // Capture the start time to measure processing duration.
 

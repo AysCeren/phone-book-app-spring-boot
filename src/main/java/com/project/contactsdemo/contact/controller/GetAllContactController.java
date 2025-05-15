@@ -4,6 +4,7 @@ import com.project.contactsdemo.contact.dto.ContactResponseDTO;
 import com.project.contactsdemo.contact.service.ContactSaveService;
 import com.project.contactsdemo.contact.service.GetAllContactService;
 import com.project.contactsdemo.core.dto.GenericDTO;
+import com.project.contactsdemo.core.ratelimitedannotation.RateLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -33,6 +34,7 @@ public class GetAllContactController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @RequestMapping(method = {RequestMethod.GET}, path = {"/getAllContact"})
+    @RateLimited(service = "GET_ALL_CONTACT")
     public ResponseEntity<GenericDTO<List<ContactResponseDTO>>> getAllContact() {
         GenericDTO<List<ContactResponseDTO>> genericDTO = getAllContactService.getAllContactDTO();
         return ResponseEntity

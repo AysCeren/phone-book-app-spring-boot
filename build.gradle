@@ -56,6 +56,8 @@ dependencies {
 	implementation("org.liquibase:liquibase-core:4.24.0")
 	//########### CIRCUIT BREAKER #############################################
 	implementation("io.github.resilience4j:resilience4j-spring-boot3:2.1.0")
+	//########### Aspect Oriented Porgamming Injection ##############/////
+	implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 tasks.named('test') {
 	useJUnitPlatform()

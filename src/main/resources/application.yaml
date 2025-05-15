@@ -36,6 +36,14 @@ logging:
 
   file:
     name: myapplication.log
+#set up a rate limiter
+rate-limiter:
+  enabled: true #bu bir endpoint için değil, applicaton'ımızın rate limiter şartı
+  limits:
+    GET_ALL_CONTACT: #that represents the end-point
+      rateLimit: 5
+      timeFrameMinutes: 1
+    #OTHER ENDPOINTS will go there
 
 #set up a circuit breaker configuration
 resilience4j.circuitbreaker:
