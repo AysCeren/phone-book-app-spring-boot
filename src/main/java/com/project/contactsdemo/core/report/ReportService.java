@@ -2,6 +2,8 @@ package com.project.contactsdemo.core.report;
 
 
 import com.project.contactsdemo.contact.dto.ContactResponseDTO;
+import com.project.contactsdemo.contact.mapper.ContactMapper;
+import com.project.contactsdemo.contact.repository.ContactRepository;
 import com.project.contactsdemo.contact.service.GetAllContactService;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
@@ -26,6 +28,8 @@ import java.util.Map;
 public class ReportService {
     //Note: The most important part for the db connection
     private final GetAllContactService contactService;
+    private final ContactRepository contactRepository;
+    private final ContactMapper contactMapper;
 
     /**
      *
@@ -37,8 +41,13 @@ public class ReportService {
     // Note: Method Signatures
     public byte[] getItemReport(String format) throws FileNotFoundException, JRException {
         File file = ResourceUtils.getFile("classpath:reports/sample-report.jrxml");
+        System.out.println("JRXML path: " + file.getAbsolutePath());
+        System.out.println("Exists: " + file.exists() + ", Is File: " + file.isFile());
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        List<ContactResponseDTO> contactResponseDTOList = contactService.contactResponseDTOList();
+        //bunu ayrı bir method içerisine alalım
+        List<ContactResponseDTO> contactResponseDTOList = contactRepository.findAll().stream()
+                .map(contactMapper::fromContactEntityToContactResponseDTO)
+                .toList();
         //Set report data
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(contactResponseDTOList);
         Map<String, Object> parameters = new HashMap<>();
