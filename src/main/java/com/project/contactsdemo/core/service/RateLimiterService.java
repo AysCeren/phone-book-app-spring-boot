@@ -56,7 +56,7 @@ public class RateLimiterService {
         }
 
         LocalDateTime currentTime = LocalDateTime.now();
-
+//synchroniezd'a bak
         synchronized (requestMap) {
             Map<String, Pair<Integer, LocalDateTime>> serviceMap = requestMap.computeIfAbsent(identifier, k -> new ConcurrentHashMap<>());
             Pair<Integer, LocalDateTime> requestData = serviceMap.getOrDefault(service, new Pair<>(0, currentTime));
@@ -66,6 +66,7 @@ public class RateLimiterService {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    //buna bakalım
                     synchronized (requestMap) {
                         Map<String, Pair<Integer, LocalDateTime>> identifierMap = requestMap.get(identifier);
                         if (identifierMap != null) { // Check for null

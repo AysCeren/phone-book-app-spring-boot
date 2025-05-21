@@ -19,7 +19,9 @@ public class RateLimiterOrientedAspect {
 
     private final RateLimiterService rateLimiterService;
     private final RateLimiterConfig config;
-
+//multithreading
+    //@Before, @After istek aralarına girmek ve işlem yapmak için
+    // .proceed() -> .doFilter()
     @Around("@annotation(rateLimited)")
     public Object enforceRateLimit(ProceedingJoinPoint joinPoint, RateLimited rateLimited) throws Throwable {
         if (!config.getEnabled()) {

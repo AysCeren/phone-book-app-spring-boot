@@ -1,4 +1,4 @@
-package com.project.contactsdemo.core.filterdeneme;
+package com.project.contactsdemo.core.filtering;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

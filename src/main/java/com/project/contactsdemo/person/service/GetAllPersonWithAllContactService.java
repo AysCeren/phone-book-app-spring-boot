@@ -22,6 +22,7 @@ public class GetAllPersonWithAllContactService {
 
     @CircuitBreaker(name = "exampleService")
     @Transactional(propagation = Propagation.REQUIRED)
+    // Note: Transactional annotation will not work on private methods due to the Spring AOP Proxy Mechanism
     public GenericDTO<List<PersonWithContactsDTO>> getAllPersonWithContacts(){
         List<Person> personListWithContacts = personRepository.findAllWithContacts();
         if (personListWithContacts.isEmpty()) {

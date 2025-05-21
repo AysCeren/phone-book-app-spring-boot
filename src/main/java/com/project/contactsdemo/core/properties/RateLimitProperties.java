@@ -7,6 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 public class RateLimitProperties {
-    private int rateLimit = 0;
+    private int rateLimit;
     private Long timeFrameMinutes;
 }
