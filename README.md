@@ -42,9 +42,11 @@ Furthermore, we may also change the structure of field in conversion like LocalD
         return birthDate != null ? LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-yyyy")) : null;
     }
  ```
-That's why it is important to know:
+That's why it is good to know:
 ```
-
+@Mapper(uses = )
+@Mapping (target =  , source = ,  qualifiedByName = )
+@Named(" ")
 ```
 2. ### Exception Handling
 3. ### Validation
