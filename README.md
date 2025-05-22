@@ -8,7 +8,7 @@
 
 The phone-book project is my **internship training project** and it is designed to teach me *Spring Boot Framework's* fundamentals and to include many different technologies I will explain in detail in the below. 
 
-## Basic Structure
+### Basic Structure
 
 + It has phone book represenation for two entities which are Person and Contact. I aimed to build one-to-many relationship between them.
 <div align= "center">
@@ -30,7 +30,7 @@ The phone-book project is my **internship training project** and it is designed 
 
 - [ ] Even the representation of the db is not complex, the project reaches its target by combining many features.
 
-## Important Logics I want to Mention
+## Important Logics I Want to Mention
 ### 1. Map Struct
 In general term,  *a mapper is a function or a class responsible for converting an object of one type into an object of another type*.
 In this project we used mapper classes to convert RequestDTO to Entity and vice-versa. The reason for that is describing the entity -object that will be stored in the db- in a certain way. 
@@ -42,18 +42,36 @@ Furthermore, we may also change the structure of field in conversion like LocalD
         return birthDate != null ? LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-yyyy")) : null;
     }
  ```
-That's why it is good to know:
+That's why it is good to know following annotatitons:
 ```
 @Mapper(uses = )
 @Mapping (target =  , source = ,  qualifiedByName = )
 @Named(" ")
 ```
-2. ### Exception Handling
-3. ### Validation
-4. ### Caching
-5. ### Rate Limiting
+### 2. Exception Handling
+I really  like answering question why we should handle exceptions?
++ If we want our code to do stuff in case of an exception, we should handle it! but not only this one. We also want to show and still communicate with our users, so that they can understand the program's requirements.
+###### That's why I have started to define exception types that can occur in that application. Like NoDataFoundExc., RateLimitExc., and ValidationExc.
+Custom exception class will be distinguishable. For ex.
+```
+public class NoDataFoundException extends RuntimeException {
+   public NoDataFoundException(String message) {
+       super(message);
+   }
+}
+```
+Then we will have a GlobalExceptionHandler as always with specific annotatiton:
+```
+@RestControllerAdvice
+```
+
+### 3. Validation
+
+### 4. Rate Limiting
+
+
 ## Technology Stack
-## Missing Parts
+
 ## Tools, Frameworks, Libraries
 - Intellij IDEA 2020
 - Gradle 8
@@ -63,3 +81,5 @@ That's why it is good to know:
 - OpenAPI v3
 - Lombok 1.18.26
 - Elastic APM 1.38.0
+
+## Missing Parts
